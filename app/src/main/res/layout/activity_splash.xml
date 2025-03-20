@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".splash.SplashActivity">
+    tools:context=".component.splash.SplashActivity">
 
     <ImageView
         android:layout_marginTop="120dp"
@@ -17,9 +17,19 @@
     <ImageView
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="50dp"
         android:src="@drawable/splash_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+        <TextView
+            android:id="@+id/copyright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:text="@string/copyright"
+            android:textColor="@color/black80"
+            android:visibility="visible" />
 </RelativeLayout>
