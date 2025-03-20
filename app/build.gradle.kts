@@ -52,4 +52,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation("com.guolindev.permissionx:permissionx:1.8.1")
+    implementation("com.tencent:mmkv-static:2.1.0")
+    implementation("me.relex:circleindicator:2.1.6")
 }

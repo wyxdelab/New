@@ -5,5 +5,7 @@
         <item name="colorOnSurface">@color/black183</item>
 
         <item name="colorPrimary">@color/primary</item>
+
+        <item name="colorLightWhite">@color/black183</item>
     </style>
 </resources>

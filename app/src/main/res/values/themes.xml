@@ -5,6 +5,19 @@
         <item name="colorOnSurface">@color/black40</item>
 
         <item name="colorPrimary">@color/primary</item>
+
+        <item name="colorLightWhite">@color/white</item>
     </style>
 
+    <!--region 按钮-->
+    <!--按钮-->
+    <style name="SuperButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/super_button_height</item>
+    </style>
+
+    <!--主色调按钮-->
+    <style name="SuperButton.Primary">
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>

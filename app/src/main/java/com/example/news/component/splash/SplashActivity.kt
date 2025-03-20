@@ -1,6 +1,7 @@
 package com.example.news.component.splash
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,8 +13,10 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.news.R
 import com.example.news.activity.BaseLogicActivity
 import com.example.news.activity.BaseViewModelActivity
+import com.example.news.component.guide.GuideActivity
 import com.example.news.databinding.ActivitySplashBinding
 import com.example.news.util.DefaultPreferenceUtil
+import com.example.news.util.PreferenceUtil
 import com.example.superui.util.SuperDateUtil
 import com.permissionx.guolindev.PermissionX
 
@@ -52,7 +55,13 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
     }
 
     private fun prepareNext() {
-        Log.d(TAG, "pre")
+        Log.d(TAG, "prepare")
+        if (PreferenceUtil.isShowGuide()) {//需要引导界面
+            startActivityAfterFinishThis(GuideActivity::class.java)
+            return
+        }
+        //跳转到下一个界面
+
     }
 
     private fun showTermsServiceAgreementDialog() {
