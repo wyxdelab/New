@@ -33,6 +33,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    viewBinding {
+        //开启视图绑定，用来代替findViewById
+        enable = true
+    }
 }
 
 dependencies {

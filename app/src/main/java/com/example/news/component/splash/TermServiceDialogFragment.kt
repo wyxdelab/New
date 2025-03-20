@@ -12,22 +12,19 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.FragmentManager
 import com.example.news.R
-import com.example.news.fragment.BaseCommonFragment
-import com.example.news.fragment.BaseDialogFragement
-import com.example.news.util.DefaultPreferenceUtil
+import com.example.news.databinding.FragmentDialogTermServiceBinding
+import com.example.news.fragment.BaseCommonDialogFragment
+import com.example.news.fragment.BaseViewModelDialogFragment
 import com.example.superui.util.ScreenUtil
 import com.example.superui.util.SuperProcessUtil
 import com.example.superui.util.SuperTextUtil
-import javax.crypto.KeyAgreement
 
 /**
  * 服务条款和隐私协议对话框
  */
-class TermServiceDialogFragment : BaseCommonFragment() {
-    private lateinit var disagreeView: Button
+class TermServiceDialogFragment : BaseViewModelDialogFragment<FragmentDialogTermServiceBinding>() {
     private lateinit var onAgreementClickListener: View.OnClickListener
-    private lateinit var contentView:TextView
-    private lateinit var primaryView:Button
+
 
     override fun initViews() {
         super.initViews()
@@ -35,29 +32,26 @@ class TermServiceDialogFragment : BaseCommonFragment() {
         isCancelable = false
 
         //格式化文本中的特殊字符和链接
-        contentView = findViewById<TextView>(R.id.content)
-        SuperTextUtil.setLinkColor(contentView, getColor(requireContext(), R.color.link))
+        SuperTextUtil.setLinkColor(binding.content, getColor(requireContext(), R.color.link))
 
-        primaryView = findViewById(R.id.primary)
-        disagreeView = findViewById(R.id.disagree)
 
     }
 
     override fun initDatum() {
         super.initDatum()
         var content = Html.fromHtml(getString(R.string.term_service_privacy_content))
-        contentView.setText(content)
+        binding.content.text = content
     }
 
 
     override fun initListeners() {
         super.initListeners()
-        primaryView.setOnClickListener {
+        binding.primary.setOnClickListener {
             dismiss()
             onAgreementClickListener.onClick(it)
         }
 
-        disagreeView.setOnClickListener{
+        binding.disagree.setOnClickListener{
             dismiss()
             SuperProcessUtil.killApp()
         }
@@ -72,13 +66,6 @@ class TermServiceDialogFragment : BaseCommonFragment() {
         dialog!!.window!!.attributes = params as WindowManager.LayoutParams
     }
 
-    override fun getLayoutView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_dialog_term_service, container, false)
-    }
 
     companion object {
         /**

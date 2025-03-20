@@ -11,26 +11,14 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.news.R
 import com.example.news.activity.BaseLogicActivity
+import com.example.news.activity.BaseViewModelActivity
+import com.example.news.databinding.ActivitySplashBinding
 import com.example.news.util.DefaultPreferenceUtil
 import com.example.superui.util.SuperDateUtil
 import com.permissionx.guolindev.PermissionX
 
-class SplashActivity : BaseLogicActivity() {
+class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
 
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_splash)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-
-        }
-
-    }
 
     override fun initDatum() {
         super.initDatum()
@@ -53,7 +41,10 @@ class SplashActivity : BaseLogicActivity() {
                 Manifest.permission.READ_PHONE_STATE)
             .request { allGranted, grantedList, deniedList ->
                 if (allGranted) {
-                    prepareNext()
+                    binding.root.postDelayed({
+                        prepareNext()
+                    }, 1000)
+
                 } else {
                     finish()
                 }
