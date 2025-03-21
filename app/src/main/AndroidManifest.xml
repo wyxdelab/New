@@ -21,6 +21,9 @@
         android:theme="@style/SuperUI.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".component.login.LoginHomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".component.guide.GuideActivity"
             android:exported="false" />
         <activity

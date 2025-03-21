@@ -18,16 +18,16 @@ object Constant {
     const val URL = "url"
     const val ARTICLE_ID = "article_id"
 
-    const val ACTION_LOGIN = "com.ixuea.courses.mymusic.ACTION_LOGIN"
+    const val ACTION_LOGIN = "com.example.news.ACTION_LOGIN"
 
     /**
      * 广告点击了
      */
-    const val ACTION_AD = "com.ixuea.courses.mymusic.ACTION_AD"
-    const val ACTION_CHAT = "com.ixuea.courses.mymusic.ACTION_CHAT"
-    const val ACTION_SCAN = "com.ixuea.courses.mymusic.ACTION_SCAN"
-    const val ACTION_SEARCH = "com.ixuea.courses.mymusic.ACTION_SEARCH"
-    const val ACTION_PUSH = "com.ixuea.courses.mymusic.ACTION_PUSH"
+    const val ACTION_AD = "com.example.news.ACTION_AD"
+    const val ACTION_CHAT = "com.example.news.ACTION_CHAT"
+    const val ACTION_SCAN = "com.example.news.ACTION_SCAN"
+    const val ACTION_SEARCH = "com.example.news.ACTION_SEARCH"
+    const val ACTION_PUSH = "com.example.news.ACTION_PUSH"
 
     const val ANONYMOUS = "anonymous"
 

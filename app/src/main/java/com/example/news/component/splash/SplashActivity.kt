@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.news.MainActivity
 import com.example.news.R
 import com.example.news.activity.BaseLogicActivity
 import com.example.news.activity.BaseViewModelActivity
@@ -61,7 +62,7 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
             return
         }
         //跳转到下一个界面
-
+        startActivityAfterFinishThis(MainActivity::class.java)
     }
 
     private fun showTermsServiceAgreementDialog() {

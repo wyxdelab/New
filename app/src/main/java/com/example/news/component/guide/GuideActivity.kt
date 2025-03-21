@@ -1,13 +1,16 @@
 package com.example.news.component.guide
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.news.MainActivity
 import com.example.news.R
 import com.example.news.activity.BaseViewModelActivity
 import com.example.news.databinding.ActivityGuideBinding
+import com.example.news.util.Constant
 import com.example.news.util.PreferenceUtil
 
 /**
@@ -22,10 +25,15 @@ class GuideActivity : BaseViewModelActivity<ActivityGuideBinding>() {
         super.initListeners()
         binding.loginOrRegister.setOnClickListener{
             setShowGuide()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.action = Constant.ACTION_LOGIN
+            startActivity(intent)
+            finish()
         }
 
         binding.experienceNow.setOnClickListener{
             setShowGuide()
+            startActivityAfterFinishThis(MainActivity::class.java)
         }
     }
 
