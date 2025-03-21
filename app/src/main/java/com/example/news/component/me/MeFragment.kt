@@ -1,7 +1,6 @@
 package com.example.news.component.me
 
 import android.os.Bundle
-import com.example.news.databinding.FragmentHomeBinding
 import com.example.news.databinding.FragmentMeBinding
 import com.example.news.fragment.BaseViewModelFragment
 

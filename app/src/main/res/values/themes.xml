@@ -47,4 +47,23 @@
     <style name="SuperButton.Primary">
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <!--ShapeableImageView样式-->
+    <!-- 圆角图片 -->
+    <style name="RoundedCornerImageStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/round_small</item>
+    </style>
+
+    <style name="RoundedCorner">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/d25</item>
+    </style>
+    <!--/ShapeableImageView样式-->
+
+    <!--/ShapeableImageView样式-->
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">@dimen/text_meddle2</item>
+    </style>
 </resources>

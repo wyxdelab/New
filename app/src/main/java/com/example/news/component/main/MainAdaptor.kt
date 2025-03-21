@@ -3,9 +3,8 @@ package com.example.news.component.main
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.news.adapter.BaseFragmentPagerAdapter
 import com.example.news.component.category.CategoryFragment
-import com.example.news.component.home.HomeFragment
+import com.example.news.component.discovery.DiscoveryFragment
 import com.example.news.component.me.MeFragment
 import com.example.news.component.shortvideo.ShortVideoFragment
 
@@ -22,7 +21,7 @@ class MainAdaptor(fragmentActivity: FragmentActivity, private val count: Int): F
             1 -> ShortVideoFragment.newInstance()
             2 -> CategoryFragment.newInstance()
             3 -> MeFragment.newInstance()
-            else -> HomeFragment.newInstance()
+            else -> DiscoveryFragment.newInstance()
         }
     }
 }
