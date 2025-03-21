@@ -4,17 +4,21 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.example.news.R
 import com.example.news.databinding.ItemContentBinding
 import com.example.news.util.ImageUtil
+import com.example.superui.decoration.GridDividerItemDecoration
+import com.example.superui.util.DensityUtil
 import com.example.superui.util.SuperDateUtil
+import org.apache.commons.collections4.CollectionUtils
 import org.apache.commons.lang3.StringUtils
 
-class ContentAdaptor: BaseQuickAdapter<Content, ContentAdaptor.ViewHolder>() {
+class ContentAdaptor(): BaseQuickAdapter<Content, ContentAdaptor.ViewHolder>() {
 
-    class ViewHolder(val binding: ItemContentBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(val binding: ItemContentBinding) : RecyclerView.ViewHolder(binding.root) {
         /**
          * 绑定数据到局部文件，显示到屏幕
          */
@@ -33,6 +37,31 @@ class ContentAdaptor: BaseQuickAdapter<Content, ContentAdaptor.ViewHolder>() {
                 binding.videoContainer.visibility = View.VISIBLE
                 ImageUtil.show(binding.icon, item.icons?.get(0))
                 binding.duration.text = SuperDateUtil.s2ms(item.duration)
+            } else if (CollectionUtils.isNotEmpty(item.icons)) {
+                binding.list.visibility = View.VISIBLE
+
+                var spanCount = 2
+                if (item.icons!!.size >= 3) {
+                    spanCount = 3
+                }
+
+                val layoutManager = GridLayoutManager(binding.list.context, spanCount)
+                binding.list.layoutManager = layoutManager
+
+                if (binding.list.itemDecorationCount > 0) {
+                    binding.list.removeItemDecorationAt(0)
+                }
+                val itemDecoration = GridDividerItemDecoration(
+                    binding.list.context,
+                    DensityUtil.dip2px(binding.list.context, 5f).toInt()
+                )
+
+                binding.list.addItemDecoration(itemDecoration)
+
+                var imageAdaptor = ImageAdaptor()
+
+                binding.list.adapter = imageAdaptor
+                imageAdaptor.submitList(item.icons!!)
             }
         }
 

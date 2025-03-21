@@ -135,4 +135,25 @@ dependencies {
     //更方便的日期时间，运算，解析格式化框架
     //https://www.joda.org/joda-time/index.html
     implementation 'joda-time:joda-time:2.12.2'
+
+    //集合工具类
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-collections4
+    implementation 'org.apache.commons:commons-collections4:+'
+
+    //通过OkHttp的拦截器机制
+    //实现在应用通知栏显示网络请求功能
+    //https://github.com/ChuckerTeam/chucker
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
+
+    //region 下拉刷新，上来加载更多
+    //下拉刷新框架
+    //https://github.com/scwang90/SmartRefreshLayout
+    implementation 'io.github.scwang90:refresh-layout-kernel:2.0.5'
+    implementation 'io.github.scwang90:refresh-header-classics:2.0.5'     //经典刷新头
+    implementation 'io.github.scwang90:refresh-footer-classics:2.0.5'    //经典加载头
+
+    //类似微信图片预览框架
+    //https://github.com/wanglu1209/PhotoViewer
+    implementation 'com.github.wanglu1209:PhotoViewer:0.50'
 }
