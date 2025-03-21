@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".component.main.MainActivity"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/divider_small"/>
+
+    <com.angcyo.tablayout.DslTabLayout
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:tab_convex_background="@color/white"
+        app:tab_deselect_color="?attr/colorOnSurface"
+        app:tab_icon_view_id="@id/content"
+        app:tab_indicator_height="3dp"
+        app:tab_item_is_equ_width="true"
+        app:tab_draw_badge="true"
+        app:tab_select_color="?attr/colorPrimary"
+        app:tab_text_view_id="@id/content"
+        tools:tab_default_index="0">
+
+
+    </com.angcyo.tablayout.DslTabLayout>
+
+</LinearLayout>

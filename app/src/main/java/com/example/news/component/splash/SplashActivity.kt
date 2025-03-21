@@ -1,24 +1,13 @@
 package com.example.news.component.splash
 
 import android.Manifest
-import android.content.Intent
-import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.news.MainActivity
-import com.example.news.R
-import com.example.news.activity.BaseLogicActivity
+import com.example.news.component.main.MainActivity
 import com.example.news.activity.BaseViewModelActivity
 import com.example.news.component.guide.GuideActivity
 import com.example.news.databinding.ActivitySplashBinding
 import com.example.news.util.DefaultPreferenceUtil
 import com.example.news.util.PreferenceUtil
-import com.example.superui.util.SuperDateUtil
 import com.permissionx.guolindev.PermissionX
 
 class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {

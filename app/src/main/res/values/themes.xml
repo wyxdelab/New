@@ -5,8 +5,35 @@
         <item name="colorOnSurface">@color/black40</item>
 
         <item name="colorPrimary">@color/primary</item>
-
+        <!-- 次色调，例如floatActionButton背景，SeekBar进度颜色 -->
+        <item name="colorSecondary">@color/primary</item>
+        <item name="colorOnSecondary">@color/white</item>
         <item name="colorLightWhite">@color/white</item>
+
+        <!-- 分割线颜色 -->
+        <item name="colorDivider">@color/black183</item>
+
+        <!-- tab bar控件背景 -->
+        <item name="colorTabBar">?android:attr/colorBackground</item>
+
+<!--        &lt;!&ndash; 分割线 &ndash;&gt;-->
+<!--        <item name="android:listDivider">@drawable/shape_divider</item>-->
+
+        <!-- 状态栏颜色 -->
+        <item name="android:statusBarColor" tools:targetApi="l">?android:attr/colorBackground</item>
+
+        <!--Toolbar背景颜色-->
+        <item name="colorToolbar">@color/white</item>
+
+        <item name="colorSurface">@color/white</item>
+
+        <!--colorSurface点击颜色-->
+        <item name="colorSurfaceClick">@color/black180</item>
+
+        <item name="colorOnTextSecondary">@color/black80</item>
+
+        <!--侧滑背景-->
+        <item name="colorSlideBackground">@color/black183</item>
     </style>
 
     <!--region 按钮-->

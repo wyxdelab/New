@@ -1,12 +1,7 @@
 package com.example.news.component.guide
 
 import android.content.Intent
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.news.MainActivity
+import com.example.news.component.main.MainActivity
 import com.example.news.R
 import com.example.news.activity.BaseViewModelActivity
 import com.example.news.databinding.ActivityGuideBinding
