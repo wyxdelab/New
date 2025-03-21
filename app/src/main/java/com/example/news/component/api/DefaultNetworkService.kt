@@ -25,7 +25,6 @@ interface DefaultNetworkService {
     @GET("v1/contents")
     suspend fun contents(
         @Query(value = "last") last: String?,
-        @Query(value = "category_id") categoryId: String?,
         @Query(value = "user_id") userId: String?,
         @Query(value = "size") size: Int,
         @Query(value = "style") style: Int? = null,

@@ -17,7 +17,7 @@
         <item name="colorTabBar">?android:attr/colorBackground</item>
 
         <!-- 分割线 -->
-<!--        <item name="android:listDivider">@drawable/shape_divider</item>-->
+        <item name="android:listDivider">@drawable/shape_divider</item>
 
         <!-- 状态栏颜色 -->
         <item name="android:statusBarColor" tools:targetApi="l">?android:attr/colorBackground</item>

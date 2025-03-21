@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.example.news.util.ReflectUtil
 
-open class BaseViewModelFragment<VB : ViewBinding> : BaseCommonFragment(){
+open class BaseViewModelFragment<VB : ViewBinding> : BaseLogicFragment(){
     private var _binding: VB? = null
     protected val binding
         get() = _binding!!

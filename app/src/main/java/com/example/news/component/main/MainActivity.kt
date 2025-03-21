@@ -1,5 +1,6 @@
 package com.example.news.component.main
 
+import androidx.viewpager2.widget.ViewPager2
 import com.angcyo.tablayout.ViewPagerDelegate
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
 import com.example.news.R
@@ -8,11 +9,17 @@ import com.example.news.component.login.LoginHomeActivity
 import com.example.news.databinding.ActivityMainBinding
 import com.example.news.databinding.ItemTabBinding
 import com.example.news.util.Constant
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
 /**
  * 首页
  */
 class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
+
+    override fun initViews() {
+        super.initViews()
+        QMUIStatusBarHelper.translucent(this)
+    }
     override fun initDatum() {
         super.initDatum()
         //页面滚动控件
@@ -54,6 +61,26 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
             R.drawable.selector_tab_video,
             R.drawable.selector_tab_category,
             R.drawable.selector_tab_me
+        )
+    }
+
+    override fun initListeners() {
+        super.initListeners()
+        binding.pager.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                when (position) {
+                    0, 1 -> {
+                        QMUIStatusBarHelper.setStatusBarDarkMode(hostActivity)
+                    }
+                    else -> {
+                        QMUIStatusBarHelper.setStatusBarLightMode(hostActivity)
+                    }
+                }
+            }
+            }
+
         )
     }
 }
