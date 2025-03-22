@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_outer">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_outer"
+        android:text="这是标题"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/text_title"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+
+    <LinearLayout
+        android:id="@+id/user_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <!--头像-->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/avatar_width_meddle"
+            android:layout_height="@dimen/avatar_width_meddle"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_avatar"
+            app:shapeAppearanceOverlay="@style/RoundedCornerImageStyle" />
+
+        <!--用户信息容器-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_meddle"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <!--昵称-->
+            <TextView
+                android:id="@+id/nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="@dimen/text_meddle"
+                android:textStyle="bold"
+                tools:text="这是昵称" />
+
+            <TextView
+                android:id="@+id/detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="优质美食领域创作者"
+                android:textColor="@color/black80"
+                android:textSize="@dimen/text_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/like_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/d8"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/follow"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="@string/follow"
+                android:textSize="@dimen/text_small" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--内容-->
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_outer"
+        android:lineSpacingMultiplier="@dimen/line_space"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/text_large"
+        tools:text="20个让人意想不到的搞笑瞬间，全是名场面，承包了我一天的笑点！" />
+
+    <!--归属地-->
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d30"
+        android:text="来自：成都天府广场"
+        android:textColor="?attr/colorOnTextSecondary"
+        android:textSize="@dimen/text_meddle"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/comment_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            tools:text="@string/comments_count2" />
+
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="@dimen/line_space"
+            android:textColor="@color/black80"
+            android:textSize="@dimen/text_meddle"
+            tools:text="@string/other_count" />
+
+    </LinearLayout>
+</LinearLayout>

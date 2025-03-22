@@ -1,6 +1,8 @@
 package com.example.news.activity
 
 import android.content.Intent
+import android.text.TextUtils
+import com.example.news.util.Constant
 
 /**
  * 通用界面逻辑
@@ -21,5 +23,16 @@ open class BaseCommonActivity:BaseActivity() {
         startActivity(clazz)
 
         finish()
+    }
+
+    protected fun startActivityExtraId(
+        clazz: Class<*>?,
+        id: String
+    ) {
+        val intent = Intent(this, clazz).apply {
+            putExtra(Constant.ID, id)
+        }
+
+        startActivity(intent)
     }
 }

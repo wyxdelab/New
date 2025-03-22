@@ -26,6 +26,12 @@ class ContentViewModel(private val categoryId: String?) : BaseViewModel() {
     private val _data = MutableSharedFlow<Meta<Content>>()
     val data: Flow<Meta<Content>> = _data
 
+    private val _toArticleDetail = MutableSharedFlow<String>()
+    val toArticleDetail: SharedFlow<String> = _toArticleDetail
+
+    private val _toCourseDetail = MutableSharedFlow<String>()
+    val toCourseDetail: SharedFlow<String> = _toCourseDetail
+
 
     fun loadMore(lastId: String? = null) {
         this.lastId = lastId
@@ -38,5 +44,18 @@ class ContentViewModel(private val categoryId: String?) : BaseViewModel() {
 
         }
 
+    }
+
+    /**
+     * 列表item点击
+     */
+    fun itemClick(data: Content) {
+        viewModelScope.launch {
+            if (StringUtils.isNotBlank(data.uri)) {
+                _toCourseDetail.emit(data.id!!)
+            } else {
+                _toArticleDetail.emit(data.id!!)
+            }
+        }
     }
 }

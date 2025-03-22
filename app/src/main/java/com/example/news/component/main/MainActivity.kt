@@ -1,5 +1,6 @@
 package com.example.news.component.main
 
+import androidx.core.view.GravityCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.angcyo.tablayout.ViewPagerDelegate
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
@@ -9,6 +10,7 @@ import com.example.news.component.login.LoginHomeActivity
 import com.example.news.databinding.ActivityMainBinding
 import com.example.news.databinding.ItemTabBinding
 import com.example.news.util.Constant
+import com.example.superui.util.SuperProcessUtil
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
 /**
@@ -23,7 +25,7 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
     override fun initDatum() {
         super.initDatum()
         //页面滚动控件
-        binding.apply {
+        binding.content.apply {
             pager.offscreenPageLimit = indicatorTitles.size
             pager.adapter = MainAdaptor(this@MainActivity, indicatorTitles.size)
         }
@@ -33,10 +35,10 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
             ItemTabBinding.inflate(layoutInflater).apply {
                 content.setText(indicatorTitles[i])
                 icon.setImageResource(indicatorIcons[i])
-                binding.indicator.addView(root)
+                binding.content.indicator.addView(root)
             }
         }
-        ViewPager2Delegate.install(binding.pager, binding.indicator, false)
+        ViewPager2Delegate.install(binding.content.pager, binding.content.indicator, false)
         val action = intent.action
         if (Constant.ACTION_LOGIN == action) {
             startActivity(LoginHomeActivity::class.java)
@@ -66,7 +68,7 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
 
     override fun initListeners() {
         super.initListeners()
-        binding.pager.registerOnPageChangeCallback(object :
+        binding.content.pager.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
@@ -82,5 +84,17 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
             }
 
         )
+
+        binding.closeApp.setOnClickListener {
+            SuperProcessUtil.killApp()
+        }
+    }
+
+    fun openDrawer() {
+        binding.drawer.openDrawer(GravityCompat.START)
+    }
+
+    fun closeDrawer() {
+        binding.drawer.closeDrawer(GravityCompat.START)
     }
 }

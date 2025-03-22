@@ -1,6 +1,7 @@
 package com.example.news.repository
 
 import com.example.news.component.api.DefaultNetworkService
+import com.example.news.component.comment.Comment
 import com.example.news.component.content.Content
 import com.example.news.entity.response.DetailResponse
 import com.example.news.entity.response.ListResponse
@@ -27,5 +28,14 @@ object DefaultNetworkRepository {
         style: Int? = null
     ): ListResponse<Content> {
         return service.contents(last, userId, categoryId, size, style)
+    }
+
+    suspend fun comments(
+        articleId: String? = null,
+        parentId: String? = null,
+        page: Int = 1,
+        size: Int = 10
+    ): ListResponse<Comment> {
+        return service.comments(articleId, parentId, page, size)
     }
 }

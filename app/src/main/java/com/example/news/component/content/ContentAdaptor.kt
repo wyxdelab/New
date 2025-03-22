@@ -16,7 +16,7 @@ import com.example.superui.util.SuperDateUtil
 import org.apache.commons.collections4.CollectionUtils
 import org.apache.commons.lang3.StringUtils
 
-class ContentAdaptor(): BaseQuickAdapter<Content, ContentAdaptor.ViewHolder>() {
+class ContentAdaptor(val viewModel: ContentViewModel) : BaseQuickAdapter<Content, ContentAdaptor.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemContentBinding) : RecyclerView.ViewHolder(binding.root) {
         /**
@@ -72,6 +72,9 @@ class ContentAdaptor(): BaseQuickAdapter<Content, ContentAdaptor.ViewHolder>() {
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int, item: Content?) {
         holder.bindData(item!!)
+        holder.itemView.setOnClickListener {
+            viewModel.itemClick(item)
+        }
     }
 
     /**

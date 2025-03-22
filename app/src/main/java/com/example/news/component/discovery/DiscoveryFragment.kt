@@ -2,6 +2,7 @@ package com.example.news.component.discovery
 
 import android.os.Bundle
 import com.example.news.adapter.TabLayoutViewPager2Mediator
+import com.example.news.component.main.MainActivity
 import com.example.news.databinding.FragmentDiscoveryBinding
 import com.example.news.fragment.BaseViewModelFragment
 import com.example.news.util.DataUtil
@@ -20,6 +21,12 @@ class DiscoveryFragment: BaseViewModelFragment<FragmentDiscoveryBinding>() {
 
     }
 
+    override fun initListeners() {
+        super.initListeners()
+        binding.menu.setOnClickListener {
+            (hostActivity as MainActivity).openDrawer()
+        }
+    }
     companion object {
         fun newInstance(): DiscoveryFragment {
             val args = Bundle()

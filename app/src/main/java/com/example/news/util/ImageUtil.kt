@@ -34,12 +34,12 @@ object ImageUtil {
 //    }
 //
 //
-//    /**
-//     * 显示头像
-//     */
-//    fun showAvatar(view: ImageView, data: String?, round: Boolean = false) {
-//        show(view, data, R.drawable.default_avatar, round)
-//    }
+    /**
+     * 显示头像
+     */
+    fun showAvatar(view: ImageView, data: String?, round: Boolean = false) {
+        show(view, data, R.drawable.default_avatar, round)
+    }
 
     /**
      * 显示网络图片

@@ -1,18 +1,17 @@
 package com.example.news.component.content
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.news.component.articleldetail.ArticleDetailActivity
 import com.example.news.databinding.FragmentContentBinding
 import com.example.news.fragment.BaseViewModelFragment
-import com.example.news.repository.DefaultNetworkRepository
 import com.example.news.util.Constant
 import kotlinx.coroutines.launch
 import org.apache.commons.lang3.StringUtils
@@ -42,7 +41,7 @@ class ContentFragment: BaseViewModelFragment<FragmentContentBinding>() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(ContentViewModel::class.java)
         //本地提示
         initViewModel(viewModel)
-        contentAdaptor = ContentAdaptor()
+        contentAdaptor = ContentAdaptor(viewModel)
         binding.list.adapter = contentAdaptor
         //接收数据
         lifecycleScope.launch {
@@ -56,6 +55,17 @@ class ContentFragment: BaseViewModelFragment<FragmentContentBinding>() {
 
                 }
                 processRefreshAndLoadMoreStatus(true, it.data?.isEmpty() ?: true)
+            }
+        }
+        //接收到文章界面id，跳转至文章详情界面
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                // 在组件处于 STARTED 状态时执行协程任务
+                viewModel.toArticleDetail.collect { id ->
+                    val intent = Intent(requireContext(), ArticleDetailActivity::class.java)
+                    intent.putExtra(Constant.ID, id)
+                    startActivity(intent)
+                }
             }
         }
 

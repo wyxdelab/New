@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -10,7 +11,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:name=".AppContext"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -20,16 +20,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/SuperUI.NoActionBar"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".component.login.LoginHomeActivity"
+            android:name=".component.userdetail.UserDetailActivity"
             android:exported="false" />
+        <activity
+            android:name=".component.articleldetail.ArticleDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".component.login.LoginHomeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".component.guide.GuideActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".component.splash.SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,7 +49,8 @@
         </activity>
         <activity
             android:name=".component.main.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
