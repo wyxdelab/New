@@ -30,6 +30,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
+            android:label=""
             android:name=".component.login.LoginHomeActivity"
             android:exported="false"
             android:screenOrientation="portrait" />

@@ -150,4 +150,14 @@
         <item name="android:textColor">@color/super_light_grey</item>
         <item name="android:textSize">@dimen/text_small</item>
     </style>
+
+    <!--toolbar浅色-->
+    <style name="SuperTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
+
+    <style name="SuperTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
+
+    <!--toolbar深色-->
+    <style name="SuperTheme.AppBarOverlay.Dark" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="SuperTheme.PopupOverlay.Light" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

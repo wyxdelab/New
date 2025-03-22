@@ -8,11 +8,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.news.R
+import com.example.news.activity.BaseTitleActivity
 import com.example.news.activity.BaseViewModelActivity
 import com.example.news.databinding.ActivityLoginHomeBinding
 import com.example.superui.util.SuperTextUtil
 
-class LoginHomeActivity : BaseViewModelActivity<ActivityLoginHomeBinding>() {
+class LoginHomeActivity : BaseTitleActivity<ActivityLoginHomeBinding>() {
     override fun initDatum() {
         super.initDatum()
         SuperTextUtil.setLinkColor(binding.userAgreement, ContextCompat.getColor(hostActivity, R.color.link))
