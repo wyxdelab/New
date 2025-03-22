@@ -29,5 +29,19 @@ object PreferenceUtil {
     private fun getBoolean(key: String, defaultValue: Boolean): Boolean {
         return p.getBoolean(key, defaultValue)
     }
+
+    fun isLogin(): Boolean {
+        return Constant.ANONYMOUS != getUserId()
+    }
+    fun setUserId(value: String?) {
+        p.encode(USER_ID, value)
+    }
+
+    fun getUserId(): String {
+        return p.decodeString(USER_ID, Constant.ANONYMOUS)!!
+    }
+
     private const val SHOW_GUIDE = "SHOW_GUIDE"
+
+    private const val USER_ID = "user"
 }

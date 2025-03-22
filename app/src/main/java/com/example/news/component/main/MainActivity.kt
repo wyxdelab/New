@@ -7,9 +7,11 @@ import com.angcyo.tablayout.delegate2.ViewPager2Delegate
 import com.example.news.R
 import com.example.news.activity.BaseViewModelActivity
 import com.example.news.component.login.LoginHomeActivity
+import com.example.news.component.userdetail.UserDetailActivity
 import com.example.news.databinding.ActivityMainBinding
 import com.example.news.databinding.ItemTabBinding
 import com.example.news.util.Constant
+import com.example.news.util.PreferenceUtil
 import com.example.superui.util.SuperProcessUtil
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
@@ -87,6 +89,15 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
 
         binding.closeApp.setOnClickListener {
             SuperProcessUtil.killApp()
+        }
+
+        binding.userContainer.setOnClickListener {
+            closeDrawer()
+            if (PreferenceUtil.isLogin()) {
+                startActivityExtraId(UserDetailActivity::class.java, PreferenceUtil.getUserId())
+            } else {
+                startActivity(LoginHomeActivity::class.java)
+            }
         }
     }
 
