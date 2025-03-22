@@ -2,6 +2,8 @@ package com.example.news.fragment
 
 
 import com.example.news.activity.BaseLogicActivity
+import com.example.news.entity.response.BaseResponse
+import com.example.news.model.BaseViewModel
 
 abstract class BaseLogicFragment : BaseCommonFragment() {
     /**
@@ -13,53 +15,53 @@ abstract class BaseLogicFragment : BaseCommonFragment() {
         protected get() = requireActivity() as BaseLogicActivity
 
 
-//    /**
-//     * 初始化通用ViewModel逻辑
-//     */
-//    protected fun initViewModel(viewModel: BaseViewModel) {
-//        //关闭界面
-//        viewModel.finishPage.observe(this) {
-//            hostActivity.finish()
-//        }
+    /**
+     * 初始化通用ViewModel逻辑
+     */
+    protected fun initViewModel(viewModel: BaseViewModel) {
+        //关闭界面
+        viewModel.finishPage.observe(this) {
+            hostActivity.finish()
+        }
+
+        //本地提示
+        viewModel.tip.observe(this) {
+            onTip(it)
+        }
+
+        //异常
+        viewModel.exception.observe(this) {
+            onException(it)
+        }
+
+        //网络响应业务失败
+        viewModel.response.observe(this) {
+            onResponse(it)
+        }
+
+        //加载提示
+        viewModel.loading.observe(this) {
+        }
+    }
 //
-//        //本地提示
-//        viewModel.tip.observe(this) {
-//            onTip(it)
-//        }
-//
-//        //异常
-//        viewModel.exception.observe(this) {
-//            onException(it)
-//        }
-//
-//        //网络响应业务失败
-//        viewModel.response.observe(this) {
-//            onResponse(it)
-//        }
-//
-//        //加载提示
-//        viewModel.loading.observe(this) {
-//        }
-//    }
-//
-//    open fun onTip(data: Int) {
-//        hostActivity.onTip(data)
-//        onError()
-//    }
-//
-//    open fun onResponse(data: BaseResponse) {
-//        hostActivity.onResponse(data)
-//        onError()
-//    }
-//
-//    open fun onException(data: Throwable) {
-//        hostActivity.onException(data)
-//        onError()
-//    }
-//
-//    open fun onError() {
-//
-//    }
+    open fun onTip(data: Int) {
+        hostActivity.onTip(data)
+        onError()
+    }
+
+    open fun onResponse(data: BaseResponse) {
+        hostActivity.onResponse(data)
+        onError()
+    }
+
+    open fun onException(data: Throwable) {
+        hostActivity.onException(data)
+        onError()
+    }
+
+    open fun onError() {
+
+    }
 //
 //    /**
 //     * 只要用户登录了，才会执行代码块

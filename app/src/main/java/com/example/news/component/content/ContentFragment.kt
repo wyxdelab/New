@@ -2,6 +2,7 @@ package com.example.news.component.content
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +28,7 @@ class ContentFragment: BaseViewModelFragment<FragmentContentBinding>() {
 
     override fun initViews() {
         super.initViews()
+        //显示数据
         binding.list.apply {
             layoutManager = LinearLayoutManager(hostActivity)
             val decoration = DividerItemDecoration(requireContext(), RecyclerView.VERTICAL)
@@ -38,8 +40,11 @@ class ContentFragment: BaseViewModelFragment<FragmentContentBinding>() {
         super.initDatum()
         val viewModelFactory = ContentViewModelFactory(requireArguments().getString(Constant.ID))
         viewModel = ViewModelProvider(this, viewModelFactory).get(ContentViewModel::class.java)
+        //本地提示
+        initViewModel(viewModel)
         contentAdaptor = ContentAdaptor()
         binding.list.adapter = contentAdaptor
+        //接收数据
         lifecycleScope.launch {
             viewModel.data.collect{
                 if (StringUtils.isBlank(viewModel.lastId)) {    //下拉刷新
@@ -64,6 +69,10 @@ class ContentFragment: BaseViewModelFragment<FragmentContentBinding>() {
         binding.refresh.finishLoadMore(500, success, noMore)
     }
 
+    override fun onError() {
+        super.onError()
+        processRefreshAndLoadMoreStatus(false)
+    }
     override fun initListeners() {
         super.initListeners()
         binding.refresh.setOnRefreshListener{ //下拉刷新监听

@@ -156,4 +156,6 @@ dependencies {
     //类似微信图片预览框架
     //https://github.com/wanglu1209/PhotoViewer
     implementation 'com.github.wanglu1209:PhotoViewer:0.50'
+
+    implementation 'com.blankj:utilcodex:1.31.1'
 }

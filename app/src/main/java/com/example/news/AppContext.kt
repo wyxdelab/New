@@ -16,6 +16,10 @@ class AppContext: Application() {
         Log.d(TAG, "initMMKV: $rootDir")
     }
 
+    fun logout() {
+
+    }
+
     companion object {
         const val TAG = "AppContext"
 
