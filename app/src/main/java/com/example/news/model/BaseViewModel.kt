@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.news.entity.response.BaseResponse
+import kotlinx.coroutines.CoroutineExceptionHandler
 
 /**
  * 所有ViewModel，主要是显示公共逻辑
@@ -11,6 +12,15 @@ import com.example.news.entity.response.BaseResponse
 open class BaseViewModel: ViewModel() {
     protected val viewModel: BaseViewModel
         get() = this
+
+    /**
+     * 协程异常处理器
+     */
+    val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
+//        Log.e(TAG, "coroutineExceptionHandler ", exception)
+        exception.printStackTrace()
+        _exception.value = exception
+    }
 
     /**
      * 本地提示

@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.news.R
 import com.example.news.entity.response.Meta
+import com.example.news.entity.response.onSuccess
 import com.example.news.model.BaseViewModel
 import com.example.news.repository.DefaultNetworkRepository
 import kotlinx.coroutines.flow.Flow
@@ -20,7 +21,7 @@ import org.apache.commons.lang3.StringUtils
 /**
  * 内容界面的viewModel
  */
-class ContentViewModel(private val categoryId:String?): BaseViewModel() {
+class ContentViewModel(private val categoryId: String?) : BaseViewModel() {
     var lastId: String? = null
     private val _data = MutableSharedFlow<Meta<Content>>()
     val data: Flow<Meta<Content>> = _data
@@ -28,20 +29,14 @@ class ContentViewModel(private val categoryId:String?): BaseViewModel() {
 
     fun loadMore(lastId: String? = null) {
         this.lastId = lastId
-        viewModelScope.launch {
-            try {
-                val r = DefaultNetworkRepository.contents(lastId, categoryId)
-                if (r.isSucceeded) {
-                    _data.emit(r.data!!)
-                } else {
-                    _response.value = r
-                }
-            } catch (e: Exception) {
-                Log.d("TAG","error")
-                _exception.value = e
+        viewModelScope.launch(coroutineExceptionHandler) {
+
+            DefaultNetworkRepository.contents(lastId, categoryId).onSuccess(viewModel) {
+                _data.emit(it!!)
             }
 
-        }
-    }
 
+        }
+
+    }
 }

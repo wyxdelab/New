@@ -2,7 +2,9 @@ package com.example.news.repository
 
 import com.example.news.component.api.DefaultNetworkService
 import com.example.news.component.content.Content
+import com.example.news.entity.response.DetailResponse
 import com.example.news.entity.response.ListResponse
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -11,6 +13,10 @@ import retrofit2.http.Query
 object DefaultNetworkRepository {
     private val service: DefaultNetworkService by lazy {
         DefaultNetworkService.create()
+    }
+
+    suspend fun contentDetail(id: String): DetailResponse<Content> {
+        return service.contentDetail(id)
     }
 
     suspend fun contents(
