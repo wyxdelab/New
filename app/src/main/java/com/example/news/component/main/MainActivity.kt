@@ -17,12 +17,14 @@ import com.example.news.component.login.LoginHomeActivity
 import com.example.news.component.login.LoginViewModel
 import com.example.news.component.user.User
 import com.example.news.component.userdetail.UserDetailActivity
+import com.example.news.component.web.WebActivity
 import com.example.news.databinding.ActivityMainBinding
 import com.example.news.databinding.ItemTabBinding
 import com.example.news.util.Constant
 import com.example.news.util.ImageUtil
 import com.example.news.util.PreferenceUtil
 import com.example.superui.dialog.SuperDialog
+import com.example.superui.extension.shortToast
 import com.example.superui.util.SuperProcessUtil
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import hide
@@ -105,6 +107,9 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
         val action = intent.action
         if (Constant.ACTION_LOGIN == action) {
             startActivity(LoginHomeActivity::class.java)
+        } else if (Constant.ACTION_AD == action) {
+            //广告点击
+            processAdClick(intent.getParcelableExtra(Constant.AD)!!)
         }
 
         viewModel.loadSplashAd()
@@ -184,5 +189,27 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
 
     fun closeDrawer() {
         binding.drawer.closeDrawer(GravityCompat.START)
+    }
+
+    private fun processAdClick(data: Ad) {
+        if (data.uri!!.startsWith("http")) {
+            WebActivity.start(hostActivity, data.uri!!)
+        } else {
+            try {
+                //应用
+                val intent = Intent(Intent.ACTION_VIEW)
+                val uri = Uri.parse(data.uri)
+
+                //例如：打开我们在腾讯课程上的仿微信项目课程详情页面
+//            val uri = Uri.parse("tencentedu://openpage/coursedetail?courseid=4875119&termid=103425768&taid=11008662607906617&fromWeb=1&sessionPath=165013705913519225082472#");
+//            val uri = Uri.parse("http://www.ixuea.com/")
+                intent.data = uri
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                //没有安装对应的应用
+
+                R.string.not_found_activity.shortToast()
+            }
+        }
     }
 }

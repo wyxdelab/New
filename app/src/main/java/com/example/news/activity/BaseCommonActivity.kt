@@ -35,4 +35,15 @@ open class BaseCommonActivity:BaseActivity() {
 
         startActivity(intent)
     }
+
+    /**
+     * 获取字符串
+     */
+    protected fun extraString(key: String): String {
+        return extraStringOrNull(key)!!
+    }
+
+    protected fun extraStringOrNull(key: String): String? {
+        return intent.getStringExtra(key)
+    }
 }
