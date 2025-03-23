@@ -168,4 +168,8 @@ dependencies {
     //基于协程跨界面通讯
     //https://github.com/liangjingkanji/Channel
     implementation 'com.github.liangjingkanji:Channel:1.1.5'
+
+    //类似滴滴出行验证码输入框控件
+    //https://github.com/jenly1314/SplitEditText
+    implementation 'com.github.jenly1314:splitedittext:1.1.0'
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.news.R
 import com.example.news.component.content.Content
+import com.example.news.component.input.InputCodePageData
 import com.example.news.component.user.User
 import com.example.news.model.BaseViewModel
 import com.example.news.repository.DefaultNetworkRepository
@@ -100,7 +101,19 @@ class LoginViewModel() : BaseViewModel() {
             }
         }
     }
-//
+
+    /**
+     * 验证码登录
+     */
+    fun login(data: InputCodePageData) {
+        val user = User()
+        user.phone = data.phone
+        user.email = data.email
+        user.code = data.code
+        login(user)
+    }
+
+    //
 //    /**
 //     * 验证码登录
 //     */

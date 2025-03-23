@@ -3,8 +3,10 @@ package com.example.news.component.api
 
 import com.example.news.component.comment.Comment
 import com.example.news.component.content.Content
+import com.example.news.component.input.CodeRequest
 import com.example.news.component.login.Session
 import com.example.news.component.user.User
+import com.example.news.entity.Base
 import com.example.news.entity.BaseId
 import com.example.news.entity.response.DetailResponse
 import com.example.news.entity.response.ListResponse
@@ -66,19 +68,19 @@ interface DefaultNetworkService {
     suspend fun register(
         @Body data: User
     ): DetailResponse<BaseId>
-//
-//    //region 验证码
-//    /**
-//     * 发送验证码
-//     *
-//     * @param data
-//     * @return
-//     */
-//    @POST("v1/codes")
-//    suspend fun sendCode(
-//        @Query(value = "style") style: Int,
-//        @Body data: CodeRequest
-//    ): DetailResponse<Base>
+
+    //region 验证码
+    /**
+     * 发送验证码
+     *
+     * @param data
+     * @return
+     */
+    @POST("v1/codes")
+    suspend fun sendCode(
+        @Query(value = "style") style: Int,
+        @Body data: CodeRequest
+    ): DetailResponse<Base>
 //
 //    /**
 //     * 校验验证码

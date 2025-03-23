@@ -11,6 +11,8 @@ import com.drake.channel.receiveEvent
 import com.example.news.R
 import com.example.news.activity.BaseTitleActivity
 import com.example.news.activity.BaseViewModelActivity
+import com.example.news.component.input.InputCodeActivity
+import com.example.news.component.input.InputIdentityActivity
 import com.example.news.databinding.ActivityLoginHomeBinding
 import com.example.superui.util.SuperTextUtil
 
@@ -28,6 +30,10 @@ class LoginHomeActivity : BaseLoginActivity<ActivityLoginHomeBinding>() {
         super.initListeners()
         binding.usernameLogin.setOnClickListener {
             startActivity(LoginActivity::class.java)
+        }
+
+        binding.phoneLogin.setOnClickListener {
+            InputIdentityActivity.start(hostActivity)
         }
     }
 }
