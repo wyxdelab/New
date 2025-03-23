@@ -5,6 +5,7 @@ import com.example.news.component.comment.Comment
 import com.example.news.component.content.Content
 import com.example.news.component.login.Session
 import com.example.news.component.user.User
+import com.example.news.entity.BaseId
 import com.example.news.entity.response.DetailResponse
 import com.example.news.entity.response.ListResponse
 import retrofit2.http.Body
@@ -60,11 +61,11 @@ interface DefaultNetworkService {
     suspend fun login(
         @Body data: User
     ): DetailResponse<Session>
-//
-//    @POST("v1/users")
-//    suspend fun register(
-//        @Body data: User
-//    ): DetailResponse<BaseId>
+
+    @POST("v1/users")
+    suspend fun register(
+        @Body data: User
+    ): DetailResponse<BaseId>
 //
 //    //region 验证码
 //    /**

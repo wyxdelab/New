@@ -2,6 +2,8 @@ package com.example.news
 
 import android.app.Application
 import android.util.Log
+import com.drake.channel.sendEvent
+import com.example.news.component.login.LoginStatusChangedEvent
 import com.example.news.util.PreferenceUtil
 import com.tencent.mmkv.MMKV
 
@@ -42,11 +44,15 @@ class AppContext: Application() {
 //            DownloadService.downloadManager = null
 //        }
 
-//        loginStatusChanged()
+        loginStatusChanged()
+    }
+
+    private fun loginStatusChanged() {
+        sendEvent(LoginStatusChangedEvent())
     }
 
     fun onLogin() {
-
+        loginStatusChanged()
     }
 
     companion object {

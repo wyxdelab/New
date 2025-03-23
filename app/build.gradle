@@ -164,4 +164,8 @@ dependencies {
 
     //https://developer.android.google.cn/jetpack/androidx/releases/lifecycle?hl=zh-cn
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+
+    //基于协程跨界面通讯
+    //https://github.com/liangjingkanji/Channel
+    implementation 'com.github.liangjingkanji:Channel:1.1.5'
 }

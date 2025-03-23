@@ -5,6 +5,7 @@ import com.example.news.component.comment.Comment
 import com.example.news.component.content.Content
 import com.example.news.component.login.Session
 import com.example.news.component.user.User
+import com.example.news.entity.BaseId
 import com.example.news.entity.response.DetailResponse
 import com.example.news.entity.response.ListResponse
 import retrofit2.http.Path
@@ -45,9 +46,9 @@ object DefaultNetworkRepository {
         return service.login(data)
     }
 
-//    suspend fun register(data: User): DetailResponse<BaseId> {
-//        return service.register(data)
-//    }
+    suspend fun register(data: User): DetailResponse<BaseId> {
+        return service.register(data)
+    }
 
     suspend fun userDetail(id: String): DetailResponse<User> {
         return service.userDetail(id)
