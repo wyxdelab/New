@@ -6,6 +6,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.angcyo.tablayout.ViewPagerDelegate
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
+import com.example.news.AppContext
 import com.example.news.R
 import com.example.news.activity.BaseViewModelActivity
 import com.example.news.component.login.LoginHomeActivity
@@ -17,6 +18,7 @@ import com.example.news.databinding.ItemTabBinding
 import com.example.news.util.Constant
 import com.example.news.util.ImageUtil
 import com.example.news.util.PreferenceUtil
+import com.example.superui.dialog.SuperDialog
 import com.example.superui.util.SuperProcessUtil
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import hide
@@ -153,6 +155,20 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
             } else {
                 startActivity(LoginHomeActivity::class.java)
             }
+        }
+
+        //退出登录点击
+        binding.primary.setOnClickListener { v ->
+            //弹出确认对话框
+            //防止用户误操作
+            //同时我们本质是想留住用户
+            SuperDialog.newInstance(supportFragmentManager)
+                .setTitleRes(R.string.confirm_logout)
+                .setOnClickListener {
+                    AppContext.instance.logout()
+                    showNotLogin()
+                    closeDrawer()
+                }.show()
         }
     }
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.fragment.app.DialogFragment
 
 abstract class BaseDialogFragement : DialogFragment() {
@@ -43,5 +44,7 @@ abstract class BaseDialogFragement : DialogFragment() {
         initListeners()
     }
 
-
+    fun <T : View?> findViewById(@IdRes id: Int): T {
+        return requireView().findViewById(id)
+    }
 }

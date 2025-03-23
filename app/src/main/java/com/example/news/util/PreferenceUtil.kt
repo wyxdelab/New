@@ -76,6 +76,13 @@ object PreferenceUtil {
     fun getChatToken(): String {
         return p.decodeString(CHAT_TOKEN)!!
     }
+
+    fun logout() {
+        p.removeValueForKey(USER_ID)
+        p.removeValueForKey(TOKEN)
+        p.removeValueForKey(CHAT_TOKEN)
+    }
+
     private const val SHOW_GUIDE = "SHOW_GUIDE"
 
     private const val USER_ID = "user"
