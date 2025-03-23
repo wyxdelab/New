@@ -7,7 +7,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.example.news.AppContext
 import com.example.news.R
+import com.example.superui.util.DensityUtil
 
 import java.io.FileInputStream
 import java.io.InputStream
@@ -22,18 +24,18 @@ object ImageUtil {
      * @param view
      * @param data
      */
-//    fun showLocalImage(view: ImageView, data: String) {
-//        //获取通用配置
-//        val options: RequestOptions = getCommonRequestOptions()
-//
-//        //使用Glide显示图片
-//        Glide.with(view.context)
-//            .load(data)
-//            .apply(options)
-//            .into(view!!)
-//    }
-//
-//
+    fun showLocalImage(view: ImageView, data: String) {
+        //获取通用配置
+        val options: RequestOptions = getCommonRequestOptions()
+
+        //使用Glide显示图片
+        Glide.with(view.context)
+            .load(data)
+            .apply(options)
+            .into(view!!)
+    }
+
+
     /**
      * 显示头像
      */
@@ -85,28 +87,28 @@ object ImageUtil {
      *
      * @return
      */
-//    fun getCommonRequestOptions(round: Boolean = false): RequestOptions {
-//        //创建配置选项
-//        val options = RequestOptions()
-//
-//        //占位图
-////        options.placeholder(R.drawable.placeholder)
-//
-//        //出错后显示的图片
-//        //包括：图片不存在等情况
-//        options.error(R.drawable.placeholder_error)
-//
-//        //从中心裁剪
-////        options.centerCrop()
-//
-//        if (round) {
-//            options.transform(RoundedCorners(DensityUtil.dip2px(AppContext.instance, 5F).toInt()))
-//        }
-//
-//        options.diskCacheStrategy(DiskCacheStrategy.ALL)
-//        return options
-//    }
-//
+    fun getCommonRequestOptions(round: Boolean = false): RequestOptions {
+        //创建配置选项
+        val options = RequestOptions()
+
+        //占位图
+//        options.placeholder(R.drawable.placeholder)
+
+        //出错后显示的图片
+        //包括：图片不存在等情况
+        options.error(R.drawable.placeholder_error)
+
+        //从中心裁剪
+//        options.centerCrop()
+
+        if (round) {
+            options.transform(RoundedCorners(DensityUtil.dip2px(AppContext.instance, 5F).toInt()))
+        }
+
+        options.diskCacheStrategy(DiskCacheStrategy.ALL)
+        return options
+    }
+
 //    /**
 //     * 显示绝对路径图片
 //     *

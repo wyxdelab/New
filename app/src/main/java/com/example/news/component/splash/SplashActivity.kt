@@ -1,12 +1,15 @@
 package com.example.news.component.splash
 
 import android.Manifest
+import android.content.Intent
 import android.util.Log
 import com.example.news.component.main.MainActivity
 import com.example.news.activity.BaseViewModelActivity
+import com.example.news.component.ad.AdActivity
 import com.example.news.component.guide.GuideActivity
 import com.example.news.databinding.ActivitySplashBinding
 import com.example.news.util.DefaultPreferenceUtil
+import com.example.news.util.IntentUtil
 import com.example.news.util.PreferenceUtil
 import com.permissionx.guolindev.PermissionX
 
@@ -51,7 +54,19 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
             return
         }
         //跳转到下一个界面
-        startActivityAfterFinishThis(MainActivity::class.java)
+        val intent = Intent()
+        if (PreferenceUtil.isLogin()) {
+            intent.setClass(hostActivity, AdActivity::class.java)
+        } else {
+            intent.setClass(hostActivity, MainActivity::class.java)
+        }
+
+        IntentUtil.cloneIntent(getIntent(), intent)
+
+        startActivity(intent)
+        finish()
+        //禁用启动动画
+        overridePendingTransition(0,0)
     }
 
     private fun showTermsServiceAgreementDialog() {

@@ -1,6 +1,7 @@
 package com.example.news.component.api
 
 
+import com.example.news.component.ad.Ad
 import com.example.news.component.comment.Comment
 import com.example.news.component.content.Content
 import com.example.news.component.input.CodeRequest
@@ -93,12 +94,12 @@ interface DefaultNetworkService {
 //        @Body data: CodeRequest
 //    ): DetailResponse<Base>
 //    //endregion
-//
-//    @GET("v1/ads")
-//    suspend fun ads(
-//        @Query(value = "position") position: Int,
-//        @Query(value = "style") style: Int?
-//    ): ListResponse<Ad>
+
+    @GET("v1/ads")
+    suspend fun ads(
+        @Query(value = "position") position: Int,
+        @Query(value = "style") style: Int?
+    ): ListResponse<Ad>
 //
 //    @POST("v1/contents")
 //    suspend fun createContent(

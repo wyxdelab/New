@@ -172,4 +172,16 @@ dependencies {
     //类似滴滴出行验证码输入框控件
     //https://github.com/jenly1314/SplitEditText
     implementation 'com.github.jenly1314:splitedittext:1.1.0'
+
+    //通用IO相关工具类
+    //http://commons.apache.org/proper/commons-io/
+    implementation 'commons-io:commons-io:2.0'
+
+    //给任意控件添加闪光效果
+    //这里主要用到广告界面，打开广告按钮
+    //https://github.com/facebook/shimmer-android
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+//    //腾讯播放器
+//    implementation project(':super-player-kit')
 }

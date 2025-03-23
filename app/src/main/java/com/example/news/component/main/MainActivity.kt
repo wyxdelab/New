@@ -1,5 +1,8 @@
 package com.example.news.component.main
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -9,6 +12,7 @@ import com.angcyo.tablayout.delegate2.ViewPager2Delegate
 import com.example.news.AppContext
 import com.example.news.R
 import com.example.news.activity.BaseViewModelActivity
+import com.example.news.component.ad.Ad
 import com.example.news.component.login.LoginHomeActivity
 import com.example.news.component.login.LoginViewModel
 import com.example.news.component.user.User
@@ -102,6 +106,8 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
         if (Constant.ACTION_LOGIN == action) {
             startActivity(LoginHomeActivity::class.java)
         }
+
+        viewModel.loadSplashAd()
     }
 
     companion object {

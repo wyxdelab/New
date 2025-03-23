@@ -1,5 +1,6 @@
 package com.example.news.repository
 
+import com.example.news.component.ad.Ad
 import com.example.news.component.api.DefaultNetworkService
 import com.example.news.component.comment.Comment
 import com.example.news.component.content.Content
@@ -58,5 +59,9 @@ object DefaultNetworkRepository {
 
     suspend fun sendCode(style: Int, data: CodeRequest): DetailResponse<Base> {
         return service.sendCode(style, data)
+    }
+
+    suspend fun ads(position: Int = 10, style: Int? = null): ListResponse<Ad> {
+        return service.ads(position, style)
     }
 }
