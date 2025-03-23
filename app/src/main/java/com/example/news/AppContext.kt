@@ -20,6 +20,10 @@ class AppContext: Application() {
 
     }
 
+    fun onLogin() {
+
+    }
+
     companion object {
         const val TAG = "AppContext"
 

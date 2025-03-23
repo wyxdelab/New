@@ -21,4 +21,11 @@ class LoginHomeActivity : BaseTitleActivity<ActivityLoginHomeBinding>() {
         val content = Html.fromHtml(getString(R.string.user_agreement))
         binding.userAgreement.text = content
     }
+
+    override fun initListeners() {
+        super.initListeners()
+        binding.usernameLogin.setOnClickListener {
+            startActivityAfterFinishThis(LoginActivity::class.java)
+        }
+    }
 }

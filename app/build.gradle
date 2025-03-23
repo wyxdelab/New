@@ -85,6 +85,9 @@ android {
 
 dependencies {
 
+    //添加所有libs目录里面的jar，aar
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

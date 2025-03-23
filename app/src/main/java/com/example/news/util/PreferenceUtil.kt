@@ -40,8 +40,45 @@ object PreferenceUtil {
     fun getUserId(): String {
         return p.decodeString(USER_ID, Constant.ANONYMOUS)!!
     }
+    /**
+     * 设置用户Token
+     *
+     * 可以加密后存储，防止泄露
+     * @param value
+     */
+    fun setToken(value: String?) {
+        p.encode(TOKEN, value)
+    }
 
+    /**
+     * 获取用户Token
+     *
+     * @return
+     */
+    fun getToken(): String? {
+        return p.decodeString(TOKEN)
+    }
+
+    /**
+     * 设置用户Chat Token
+     *
+     * @param value
+     */
+    fun setChatToken(value: String) {
+        p.encode(CHAT_TOKEN, value)
+    }
+
+    /**
+     * 获取用户Chat Token
+     *
+     * @return
+     */
+    fun getChatToken(): String {
+        return p.decodeString(CHAT_TOKEN)!!
+    }
     private const val SHOW_GUIDE = "SHOW_GUIDE"
 
     private const val USER_ID = "user"
+    private const val TOKEN = "token"
+    private const val CHAT_TOKEN = "CHAT_TOKEN"
 }

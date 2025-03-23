@@ -3,6 +3,8 @@ package com.example.news.component.api
 
 import com.example.news.component.comment.Comment
 import com.example.news.component.content.Content
+import com.example.news.component.login.Session
+import com.example.news.component.user.User
 import com.example.news.entity.response.DetailResponse
 import com.example.news.entity.response.ListResponse
 import retrofit2.http.Body
@@ -37,10 +39,10 @@ interface DefaultNetworkService {
      */
     @GET("v1/contents/{id}")
     suspend fun contentDetail(@Path("id") id: String): DetailResponse<Content>
-//
-//    @GET("v1/users/{id}")
-//    suspend fun userDetail(@Path("id") id: String): DetailResponse<User>
-//
+
+    @GET("v1/users/{id}")
+    suspend fun userDetail(@Path("id") id: String): DetailResponse<User>
+
     /**
      * 评论列表
      *
@@ -53,11 +55,11 @@ interface DefaultNetworkService {
         @Query(value = "page") page: Int,
         @Query(value = "size") size: Int
     ): ListResponse<Comment>
-//
-//    @POST("v1/sessions")
-//    suspend fun login(
-//        @Body data: User
-//    ): DetailResponse<Session>
+
+    @POST("v1/sessions")
+    suspend fun login(
+        @Body data: User
+    ): DetailResponse<Session>
 //
 //    @POST("v1/users")
 //    suspend fun register(

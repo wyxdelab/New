@@ -8,7 +8,9 @@ import com.example.news.model.BaseViewModel
 import com.example.news.util.PreferenceUtil
 import com.example.superui.extension.longToast
 import com.example.superui.extension.shortToast
+import com.example.superui.util.SuperDarkUtil
 import com.ixuea.superui.extension.longToast
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import java.net.ConnectException
 import java.net.SocketException
 import java.net.SocketTimeoutException
@@ -22,6 +24,16 @@ open class BaseLogicActivity:BaseCommonActivity() {
     protected val hostActivity: BaseLogicActivity
         protected get() = this
 
+    override fun initViews() {
+        super.initViews()
+        if (SuperDarkUtil.isDark(this)) {
+            //状态栏文字白色
+            QMUIStatusBarHelper.setStatusBarDarkMode(this)
+        } else {
+            //状态栏文字黑色
+            QMUIStatusBarHelper.setStatusBarLightMode(this)
+        }
+    }
     /**
      * 初始化通用ViewModel逻辑
      */

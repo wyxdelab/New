@@ -160,4 +160,37 @@
     <style name="SuperTheme.AppBarOverlay.Dark" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="SuperTheme.PopupOverlay.Light" parent="ThemeOverlay.AppCompat.Light" />
+    <!--多行输入框样式，只有底部边框-->
+    <style name="EditText">
+        <!--图标到内容的间距-->
+        <item name="android:drawablePadding">@dimen/d10</item>
+
+        <item name="android:paddingLeft">@dimen/d10</item>
+        <item name="android:paddingRight">@dimen/d10</item>
+        <item name="android:paddingTop">@dimen/d13</item>
+        <item name="android:paddingBottom">@dimen/d13</item>
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textSize">@dimen/s16</item>
+
+        <item name="android:background">@drawable/selector_edit_text</item>
+    </style>
+
+    <!--单行输入框-->
+    <style name="EditText.SingleLine">
+        <!--最大显示一行-->
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_height">@dimen/d50</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:layout_marginTop">@dimen/padding_small</item>
+    </style>
+    <!--单行输入框，圆角边框-->
+    <style name="EditText.SingleLine.Border">
+        <item name="android:background">@drawable/selector_edit_text_border</item>
+        <item name="android:layout_marginTop">@dimen/padding_large</item>
+    </style>
 </resources>
