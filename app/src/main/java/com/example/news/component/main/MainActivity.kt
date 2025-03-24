@@ -13,6 +13,7 @@ import com.example.news.AppContext
 import com.example.news.R
 import com.example.news.activity.BaseViewModelActivity
 import com.example.news.component.ad.Ad
+import com.example.news.component.address.AddressActivity
 import com.example.news.component.login.LoginHomeActivity
 import com.example.news.component.login.LoginViewModel
 import com.example.news.component.product.ProductActivity
@@ -61,6 +62,7 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
             showNotLogin()
         }
     }
+
     private fun showUserData(data: User) {
         //显示头像
         ImageUtil.showAvatar(binding.avatar, data.icon)
@@ -86,8 +88,8 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
         initViewModel(viewModel)
 
         lifecycleScope.launch {
-            viewModel.userData.collect {
-                 data -> showUserData(data)
+            viewModel.userData.collect { data ->
+                showUserData(data)
             }
         }
         //页面滚动控件
@@ -147,14 +149,15 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
                     0, 1 -> {
                         QMUIStatusBarHelper.setStatusBarDarkMode(hostActivity)
                     }
+
                     else -> {
                         QMUIStatusBarHelper.setStatusBarLightMode(hostActivity)
                     }
                 }
             }
-            }
+        })
 
-        )
+
 
         binding.closeApp.setOnClickListener {
             SuperProcessUtil.killApp()
@@ -186,6 +189,14 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
                     showNotLogin()
                     closeDrawer()
                 }.show()
+        }
+
+        binding.address.setOnClickListener {
+            loginAfter {
+                closeDrawer()
+                startActivity(AddressActivity::class.java)
+            }
+
         }
 
     }

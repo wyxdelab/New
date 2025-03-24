@@ -23,7 +23,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?android:attr/colorBackground</item>
 
         <!--Toolbar背景颜色-->
-        <item name="colorToolbar">@color/white</item>
+        <item name="colorToolbar">?attr/colorOnSurface</item>
 
         <item name="colorSurface">@color/white</item>
 
@@ -34,6 +34,14 @@
 
         <!--侧滑背景-->
         <item name="colorSlideBackground">@color/black183</item>
+    </style>
+
+    <style name="SuperUI.NoActionBar.Grey">
+        <!--背景色-->
+        <item name="android:colorBackground">@color/black183</item>
+
+        <!-- 状态栏颜色 -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
     </style>
 
     <!--region 按钮-->
@@ -205,5 +213,26 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/super_light_grey</item>
         <item name="android:textSize">@dimen/text_meddle</item>
+    </style>
+
+    <!--设置容器，没有点击效果-->
+    <style name="SuperSettingContainer.NoClickable">
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+
+    <!--设置标题-->
+    <style name="SuperSettingTitle.Input">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:minWidth">@dimen/d100</item>
+    </style>
+
+    <!--设置输入框-->
+    <style name="SettingInput">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_meddle</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 </resources>

@@ -2,6 +2,7 @@ package com.example.news.component.api
 
 
 import com.example.news.component.ad.Ad
+import com.example.news.component.address.Address
 import com.example.news.component.comment.Comment
 import com.example.news.component.content.Content
 import com.example.news.component.input.CodeRequest
@@ -109,26 +110,26 @@ interface DefaultNetworkService {
 
     @GET("v1/products/{id}")
     suspend fun productDetail(@Path("id") id: String): DetailResponse<Product>
-//
-//    //region 收货地址
-//    @GET("v1/addresses")
-//    suspend fun addresses(): ListResponse<Address>
-//
-//    @GET("v1/addresses/{id}")
-//    suspend fun addressDetail(@Path("id") id: String): DetailResponse<Address>
-//
-//    @POST("v3/addresses")
-//    suspend fun createAddress(
-//        @Body data: Address
-//    ): DetailResponse<BaseId>
-//
-//    @PATCH("v1/addresses/{id}")
-//    suspend fun updateAddress(
-//        @Path("id") id: String, @Body data: Address
-//    ): DetailResponse<BaseId>
-//
-//    @DELETE("v1/addresses/{id}")
-//    suspend fun deleteAddress(@Path("id") id: String): DetailResponse<Base>
+
+    //region 收货地址
+    @GET("v1/addresses")
+    suspend fun addresses(): ListResponse<Address>
+
+    @GET("v1/addresses/{id}")
+    suspend fun addressDetail(@Path("id") id: String): DetailResponse<Address>
+
+    @POST("v3/addresses")
+    suspend fun createAddress(
+        @Body data: Address
+    ): DetailResponse<BaseId>
+
+    @PATCH("v1/addresses/{id}")
+    suspend fun updateAddress(
+        @Path("id") id: String, @Body data: Address
+    ): DetailResponse<BaseId>
+
+    @DELETE("v1/addresses/{id}")
+    suspend fun deleteAddress(@Path("id") id: String): DetailResponse<Base>
 
     /**
      * 收货地址文本解析

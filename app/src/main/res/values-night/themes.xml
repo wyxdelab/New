@@ -23,7 +23,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?android:attr/colorBackground</item>
 
         <!--Toolbar背景颜色-->
-        <item name="colorToolbar">@color/black17</item>
+        <item name="colorToolbar">?attr/colorOnSurface</item>
 
         <item name="colorOnTextSecondary">@color/black80</item>
 
@@ -34,5 +34,15 @@
 
         <!--colorSurface点击颜色-->
         <item name="colorSurfaceClick">@color/black322</item>
+
+
+    </style>
+
+    <style name="SuperUI.NoActionBar.Grey">
+        <!--背景色-->
+        <item name="android:colorBackground">@color/black15</item>
+
+        <!-- 状态栏颜色 -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black25</item>
     </style>
 </resources>

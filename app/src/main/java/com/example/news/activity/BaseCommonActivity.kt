@@ -50,4 +50,11 @@ open class BaseCommonActivity:BaseActivity() {
     protected fun extraId(): String {
         return extraString(Constant.ID)
     }
-}
+
+    /**
+     * 获取int值
+     */
+    protected fun extraInt(key: String): Int {
+        return intent.getIntExtra(key, -1)
+
+    }    }

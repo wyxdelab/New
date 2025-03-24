@@ -1,6 +1,7 @@
 package com.example.news.repository
 
 import com.example.news.component.ad.Ad
+import com.example.news.component.address.Address
 import com.example.news.component.api.DefaultNetworkService
 import com.example.news.component.comment.Comment
 import com.example.news.component.content.Content
@@ -75,4 +76,34 @@ object DefaultNetworkRepository {
     suspend fun productDetail(id: String): DetailResponse<Product> {
         return service.productDetail(id)
     }
+
+    //region 收货地址
+    suspend fun addresses(): ListResponse<Address> {
+        return service.addresses()
+    }
+
+    suspend fun addressDetail(id: String): DetailResponse<Address> {
+        return service.addressDetail(id)
+    }
+
+    suspend fun createAddress(
+        data: Address
+    ): DetailResponse<BaseId> {
+        return service.createAddress(data)
+    }
+
+    suspend fun updateAddress(
+        data: Address
+    ): DetailResponse<BaseId> {
+        return service.updateAddress(data.id!!, data)
+    }
+
+    suspend fun deleteAddress(id: String): DetailResponse<Base> {
+        return service.deleteAddress(id)
+    }
+
+//    suspend fun recognitionAddress(data: DataRequest): DetailResponse<Address> {
+//        return service.recognitionAddress(data)
+//    }
+    //endregion
 }
