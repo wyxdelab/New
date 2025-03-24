@@ -15,6 +15,7 @@ import com.example.news.activity.BaseViewModelActivity
 import com.example.news.component.ad.Ad
 import com.example.news.component.login.LoginHomeActivity
 import com.example.news.component.login.LoginViewModel
+import com.example.news.component.product.ProductActivity
 import com.example.news.component.user.User
 import com.example.news.component.userdetail.UserDetailActivity
 import com.example.news.component.web.WebActivity
@@ -166,6 +167,11 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
             } else {
                 startActivity(LoginHomeActivity::class.java)
             }
+        }
+
+        binding.mall.setOnClickListener {
+            closeDrawer()
+            startActivity(ProductActivity::class.java)
         }
 
         //退出登录点击
