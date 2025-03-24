@@ -1,8 +1,10 @@
 package com.example.news.activity
 
+import android.util.Log
 import com.blankj.utilcode.util.NetworkUtils
 import com.example.news.AppContext
 import com.example.news.R
+import com.example.news.component.login.LoginHomeActivity
 import com.example.news.entity.response.BaseResponse
 import com.example.news.model.BaseViewModel
 import com.example.news.util.PreferenceUtil
@@ -10,7 +12,10 @@ import com.example.superui.extension.longToast
 import com.example.superui.extension.shortToast
 import com.example.superui.util.SuperDarkUtil
 import com.ixuea.superui.extension.longToast
+import com.loading.dialog.IOSLoadingDialog
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import org.apache.commons.lang3.StringUtils
+import java.lang.ref.WeakReference
 import java.net.ConnectException
 import java.net.SocketException
 import java.net.SocketTimeoutException
@@ -20,6 +25,7 @@ import java.net.UnknownHostException
  * 本项目的通用逻辑，例如：背景颜色等
  */
 open class BaseLogicActivity:BaseCommonActivity() {
+    private var loadingDialog: WeakReference<IOSLoadingDialog>? = null
 
     protected val hostActivity: BaseLogicActivity
         protected get() = this
@@ -60,9 +66,44 @@ open class BaseLogicActivity:BaseCommonActivity() {
 
         //加载提示
         viewModel.loading.observe(this) {
+            if (StringUtils.isNotBlank(it)) showLoading(it) else hideLoading()
+        }
+    }
+    //region 加载提示
+    /**
+     * 显示加载对话框
+     */
+    open fun showLoading(data: Int) {
+        showLoading(getString(data))
+    }
+
+    /**
+     * 显示加载对话框
+     */
+    open fun showLoading(data: String = getString(R.string.loading)) {
+        Log.d("TAG", "showLoading: " + data)
+        if (loadingDialog == null || loadingDialog!!.get() == null) {
+            loadingDialog = WeakReference(
+                IOSLoadingDialog()
+                    .setOnTouchOutside(false)
+
+            )
+        }
+
+        val dialogData = loadingDialog!!.get()
+        dialogData?.setHintMsg(data)
+        if (dialogData!!.dialog == null || !dialogData!!.dialog!!.isShowing) {
+            dialogData!!.show(supportFragmentManager, "LoadingDialog")
         }
     }
 
+    /**
+     * 隐藏加载对话框
+     */
+    fun hideLoading() {
+        loadingDialog?.get()?.dismiss()
+    }
+    //endregion
     open fun onTip(data: Int) {
         data.shortToast()
         onError()
@@ -129,4 +170,16 @@ open class BaseLogicActivity:BaseCommonActivity() {
 //
 //        loginStatusChanged()
 //    }
+
+    fun loginAfter(data: Runnable) {
+        if (PreferenceUtil.isLogin()) {
+            //已经登录了
+            data.run()
+        } else {
+            hostActivity.toLogin()
+        }
+    }
+    fun toLogin() {
+        startActivity(LoginHomeActivity::class.java)
+    }
 }

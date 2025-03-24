@@ -185,4 +185,32 @@ dependencies {
     //webview进度条
     //https://github.com/youlookwhat/WebProgress
     implementation 'com.github.youlookwhat:WebProgress:1.2.0'
+
+    //日志框架
+    //https://github.com/JakeWharton/timber
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    //图片选择
+    //https://github.com/LuckSiege/PictureSelector
+    implementation 'io.github.lucksiege:pictureselector:v3.11.2'
+    implementation 'io.github.lucksiege:compress:v3.11.2'
+    implementation 'io.github.lucksiege:ucrop:v3.11.2'
+
+    //Google实现的Java核心工具类
+    //相对于Apache的工具包来说
+    //Apache更多的用在Java Web项目
+    //而Guava在Android中用的更多
+    //具体的性能这里就不比较了
+    //大家感兴趣可以搜索下
+    //https://github.com/google/guava
+    implementation 'com.google.guava:guava:31.1-android'
+
+    //阿里云oss
+    //官方文档：https://help.aliyun.com/document_detail/32043.html
+    //sdk地址：https://github.com/aliyun/aliyun-oss-android-sdk
+    implementation 'com.aliyun.dpa:oss-android-sdk:2.9.13'
+
+    //加载对话框
+    //https://github.com/ydstar/loadingdialog
+    implementation project(path: ':loading-dialog')
 }

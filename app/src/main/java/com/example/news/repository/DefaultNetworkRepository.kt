@@ -64,4 +64,10 @@ object DefaultNetworkRepository {
     suspend fun ads(position: Int = 10, style: Int? = null): ListResponse<Ad> {
         return service.ads(position, style)
     }
+
+    suspend fun createContent(
+        data: Content
+    ): DetailResponse<BaseId> {
+        return service.createContent(data)
+    }
 }

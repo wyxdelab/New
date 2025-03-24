@@ -9,7 +9,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.drake.channel.receiveEvent
 import com.example.news.component.articleldetail.ArticleDetailActivity
+import com.example.news.component.publish.ContentChangedEvent
 import com.example.news.databinding.FragmentContentBinding
 import com.example.news.fragment.BaseViewModelFragment
 import com.example.news.util.Constant
@@ -67,6 +69,11 @@ class ContentFragment: BaseViewModelFragment<FragmentContentBinding>() {
                     startActivity(intent)
                 }
             }
+        }
+
+        //监听发布的新文章
+        receiveEvent<ContentChangedEvent> {
+            viewModel.loadMore()
         }
 
     }

@@ -181,6 +181,7 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
                     closeDrawer()
                 }.show()
         }
+
     }
 
     fun openDrawer() {

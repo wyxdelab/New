@@ -37,7 +37,7 @@ object NetworkModule {
 //        okhttpClientBuilder.addInterceptor(NetworkSecurityInterceptor())
 //
 //        //添加公共网络请求参数拦截器
-//        okhttpClientBuilder.addInterceptor(TokenInterceptor())
+        okhttpClientBuilder.addInterceptor(TokenInterceptor())
 
         if (Config.DEBUG) {
             //调试模式

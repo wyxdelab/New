@@ -100,11 +100,11 @@ interface DefaultNetworkService {
         @Query(value = "position") position: Int,
         @Query(value = "style") style: Int?
     ): ListResponse<Ad>
-//
-//    @POST("v1/contents")
-//    suspend fun createContent(
-//        @Body data: Content
-//    ): DetailResponse<BaseId>
+
+    @POST("v1/contents")
+    suspend fun createContent(
+        @Body data: Content
+    ): DetailResponse<BaseId>
 //
 //    @GET("v1/products/{id}")
 //    suspend fun productDetail(@Path("id") id: String): DetailResponse<Product>

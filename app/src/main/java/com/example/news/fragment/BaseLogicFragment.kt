@@ -62,19 +62,19 @@ abstract class BaseLogicFragment : BaseCommonFragment() {
     open fun onError() {
 
     }
-//
-//    /**
-//     * 只要用户登录了，才会执行代码块
-//     *
-//     * @param data
-//     */
-//    protected fun loginAfter(data: Runnable) {
-//        hostActivity.loginAfter(data)
-//    }
-//
-//    fun toLogin() {
-//        hostActivity.toLogin()
-//    }
+
+    /**
+     * 只要用户登录了，才会执行代码块
+     *
+     * @param data
+     */
+    protected fun loginAfter(data: Runnable) {
+        hostActivity.loginAfter(data)
+    }
+
+    fun toLogin() {
+        hostActivity.toLogin()
+    }
 //
 //    //region 统计
 //    /**
@@ -109,4 +109,6 @@ abstract class BaseLogicFragment : BaseCommonFragment() {
 //        return null
 //    }
 //    //endregion
+
+
 }

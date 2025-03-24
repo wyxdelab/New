@@ -7,15 +7,32 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.QuickViewHolder
 import com.example.news.R
 import com.example.news.util.ImageUtil
+import com.luck.picture.lib.entity.LocalMedia
 
 /**
  * 图片Adapter
  */
-class ImageAdaptor: BaseQuickAdapter<String, QuickViewHolder>() {
-    override fun onBindViewHolder(holder: QuickViewHolder, position: Int, item: String?) {
-        item?.let {
+class ImageAdaptor: BaseQuickAdapter<Any, QuickViewHolder>() {
+    override fun onBindViewHolder(holder: QuickViewHolder, position: Int, data: Any?) {
+        data?.let {
             val iconView = holder.getView<ImageView>(R.id.icon)
-            ImageUtil.show(iconView, it)
+            when (data) {
+                is String -> {
+                    ImageUtil.show(iconView, data)
+                }
+
+                is LocalMedia -> {
+                    //选择的图片
+                    ImageUtil.showLocalImage(iconView, data.availablePath)
+
+                    //显示删除按钮
+                    holder.setGone(R.id.close, false)
+                }
+
+                else -> {
+                    iconView.setImageResource(data as Int)
+                }
+            }
         }
     }
 
