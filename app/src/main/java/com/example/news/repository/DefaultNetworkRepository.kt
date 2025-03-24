@@ -6,6 +6,7 @@ import com.example.news.component.comment.Comment
 import com.example.news.component.content.Content
 import com.example.news.component.input.CodeRequest
 import com.example.news.component.login.Session
+import com.example.news.component.product.Product
 import com.example.news.component.user.User
 import com.example.news.entity.Base
 import com.example.news.entity.BaseId
@@ -69,5 +70,9 @@ object DefaultNetworkRepository {
         data: Content
     ): DetailResponse<BaseId> {
         return service.createContent(data)
+    }
+
+    suspend fun productDetail(id: String): DetailResponse<Product> {
+        return service.productDetail(id)
     }
 }

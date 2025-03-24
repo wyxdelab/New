@@ -46,4 +46,8 @@ open class BaseCommonActivity:BaseActivity() {
     protected fun extraStringOrNull(key: String): String? {
         return intent.getStringExtra(key)
     }
+
+    protected fun extraId(): String {
+        return extraString(Constant.ID)
+    }
 }

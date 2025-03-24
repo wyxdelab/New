@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.news.R
 import com.example.news.activity.BaseTitleActivity
+import com.example.news.component.productdetail.ProductDetailActivity
 import com.example.news.databinding.ActivityProductBinding
 import com.example.news.databinding.DropdownPhoneBrandBinding
 import com.example.news.entity.response.BaseResponse
@@ -129,6 +130,10 @@ class ProductActivity : BaseTitleActivity<ActivityProductBinding>() {
         }
 
         viewModel.loadData.observe(this) { data -> loadData() }
+
+        viewModel.detail.observe(this) {
+            startActivityExtraId(ProductDetailActivity::class.java, it.id)
+        }
     }
     private fun showError(error: Throwable) {
         binding.placeholderView.show(true)

@@ -6,6 +6,7 @@ import com.example.news.component.comment.Comment
 import com.example.news.component.content.Content
 import com.example.news.component.input.CodeRequest
 import com.example.news.component.login.Session
+import com.example.news.component.product.Product
 import com.example.news.component.user.User
 import com.example.news.entity.Base
 import com.example.news.entity.BaseId
@@ -105,9 +106,9 @@ interface DefaultNetworkService {
     suspend fun createContent(
         @Body data: Content
     ): DetailResponse<BaseId>
-//
-//    @GET("v1/products/{id}")
-//    suspend fun productDetail(@Path("id") id: String): DetailResponse<Product>
+
+    @GET("v1/products/{id}")
+    suspend fun productDetail(@Path("id") id: String): DetailResponse<Product>
 //
 //    //region 收货地址
 //    @GET("v1/addresses")

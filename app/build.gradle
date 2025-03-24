@@ -219,4 +219,20 @@ dependencies {
     //Jetpack中的分页组件
     //https://developer.android.google.cn/topic/libraries/architecture/paging/v3-overview
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+
+    //banner轮播图框架
+    //https://github.com/youth5201314/banner
+    implementation 'io.github.youth5201314:banner:2.2.2'
+
+    //指示器
+    //https://github.com/hackware1993/MagicIndicator
+    implementation 'com.github.hackware1993:MagicIndicator:1.7.0'
+
+    //TextView显示富文本，目前主要用在商品详情界面，显示富文本商品描述
+    //https://github.com/wangchenyan/html-text
+    implementation 'com.github.wangchenyan:html-text:1.0'
+
+    //可以嵌套的RadioGroup
+    //https://github.com/fodroid/XRadioGroup
+    implementation 'com.github.fodroid:XRadioGroup:1.5'
 }

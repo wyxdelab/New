@@ -17,13 +17,13 @@ class ProductViewHolder(view: View, viewModel: ProductViewModel) : RecyclerView.
 
     private var data: Product? = null
 
-//    init {
-//        view.setOnClickListener {
-//            data?.let {
-//                viewModel.detail(it)
-//            }
-//        }
-//    }
+    init {
+        view.setOnClickListener {
+            data?.let {
+                viewModel.detail(it)
+            }
+        }
+    }
 
     /**
      * 显示数据
