@@ -1,5 +1,7 @@
 package com.example.news.component.address
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -82,12 +84,25 @@ class AddressActivity : BaseTitleActivity<ActivityAddressBinding>() {
         super.initListeners()
         adapter.setOnItemClickListener { adapter, view, position ->
             val data = adapter.getItem(position) as Address
-//            if (Constant.VALUE10 == style) {
-//                finish()
-//                sendEvent(AddressChangedEvent(data))
-//            } else {
-            startActivityExtraId(AddressDetailActivity::class.java, data.id!!)
-//            }
+            if (Constant.VALUE10 == viewModel.style) {
+                finish()
+                sendEvent(AddressChangedEvent(data))
+            } else {
+                startActivityExtraId(AddressDetailActivity::class.java, data.id!!)
+            }
+        }
+    }
+
+    companion object {
+        /**
+         * 选择地址
+         *
+         * @param context
+         */
+        fun startWithSelect(context: Context) {
+            val intent = Intent(context, AddressActivity::class.java)
+            intent.putExtra(Constant.STYLE, Constant.VALUE10)
+            context.startActivity(intent)
         }
     }
 }

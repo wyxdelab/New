@@ -55,21 +55,27 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".component.confirmorder.ConfirmOrderActivity"
+            android:exported="false"
+            android:label="@string/confirm_order"
+            android:screenOrientation="portrait"
+            android:theme="@style/SuperUI.NoActionBar.Grey"/>
+        <activity
             android:name=".component.addressdetail.AddressDetailActivity"
             android:exported="false"
             android:label="@string/receiving_address_detail"
-            android:theme="@style/SuperUI.NoActionBar.Grey"/>
+            android:theme="@style/SuperUI.NoActionBar.Grey" />
         <activity
             android:name=".component.address.AddressActivity"
             android:exported="false"
             android:label="@string/receiving_address"
             android:screenOrientation="portrait"
-            android:theme="@style/SuperUI.NoActionBar.Grey"/>
+            android:theme="@style/SuperUI.NoActionBar.Grey" />
         <activity
             android:name=".component.productdetail.ProductDetailActivity"
             android:exported="false"
             android:label=""
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".component.product.ProductActivity"
             android:exported="false"
@@ -139,10 +145,10 @@
             android:name=".component.main.MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
-
-        <activity android:name="com.example.superui.citypicker.RegionSelectActivity"
+        <activity
+            android:name="com.example.superui.citypicker.RegionSelectActivity"
             android:label=""
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

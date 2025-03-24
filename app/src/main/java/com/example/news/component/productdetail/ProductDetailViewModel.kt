@@ -28,11 +28,11 @@ class ProductDetailViewModel(private val id: String) : BaseViewModel() {
         }
     }
 
-//    fun confirmOrder() {
-//        viewModelScope.launch {
-//            _purchasePage.emit(id)
-//        }
-//    }
+    fun confirmOrder() {
+        viewModelScope.launch {
+            _purchasePage.emit(id)
+        }
+    }
 //
 //    fun addCart() {
 //        val param = Cart()

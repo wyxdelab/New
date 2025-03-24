@@ -4,9 +4,14 @@ package com.example.news.component.api
 import com.example.news.component.ad.Ad
 import com.example.news.component.address.Address
 import com.example.news.component.comment.Comment
+import com.example.news.component.confirmorder.ConfirmOrderResponse
+import com.example.news.component.confirmorder.OrderRequest
 import com.example.news.component.content.Content
 import com.example.news.component.input.CodeRequest
 import com.example.news.component.login.Session
+import com.example.news.component.order.Order
+import com.example.news.component.pay.PayRequest
+import com.example.news.component.pay.PayResponse
 import com.example.news.component.product.Product
 import com.example.news.component.user.User
 import com.example.news.entity.Base
@@ -157,34 +162,34 @@ interface DefaultNetworkService {
      */
 //    @POST("v1/nlp/address")
 //    suspend fun recognitionAddress(@Body data: DataRequest): DetailResponse<Address>
-//    //endregion
-//
-//    @PATCH("v1/users/{id}")
-//    suspend fun updateUser(
-//        @Path("id") id: String, @Body data: User
-//    ): DetailResponse<Base>
-//
-//    @POST("v1/orders/confirm")
-//    suspend fun confirmOrder(
-//        @Body data: OrderRequest
-//    ): DetailResponse<ConfirmOrderResponse>
-//
-//    @POST("v1/orders")
-//    suspend fun createOrder(
-//        @Body data: OrderRequest
-//    ): DetailResponse<BaseId>
-//
-//    @GET("v1/orders/{id}")
-//    suspend fun orderDetail(@Path("id") id: String): DetailResponse<Order>
-//
-//    @GET("v1/orders")
-//    suspend fun orders(@Query(value = "status") status: Int): ListResponse<Order>
-//
-//    @POST("v1/orders/{id}/pay")
-//    suspend fun orderPay(
-//        @Path("id") id: String, @Body data: PayRequest
-//    ): DetailResponse<PayResponse>
-//
+    //endregion
+
+    @PATCH("v1/users/{id}")
+    suspend fun updateUser(
+        @Path("id") id: String, @Body data: User
+    ): DetailResponse<Base>
+
+    @POST("v1/orders/confirm")
+    suspend fun confirmOrder(
+        @Body data: OrderRequest
+    ): DetailResponse<ConfirmOrderResponse>
+
+    @POST("v1/orders")
+    suspend fun createOrder(
+        @Body data: OrderRequest
+    ): DetailResponse<BaseId>
+
+    @GET("v1/orders/{id}")
+    suspend fun orderDetail(@Path("id") id: String): DetailResponse<Order>
+
+    @GET("v1/orders")
+    suspend fun orders(@Query(value = "status") status: Int): ListResponse<Order>
+
+    @POST("v1/orders/{id}/pay")
+    suspend fun orderPay(
+        @Path("id") id: String, @Body data: PayRequest
+    ): DetailResponse<PayResponse>
+
 //    //region 购物车
 //    @GET("v1/carts")
 //    suspend fun carts(): ListResponse<Cart>

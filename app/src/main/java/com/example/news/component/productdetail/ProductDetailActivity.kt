@@ -21,6 +21,7 @@ import com.bumptech.glide.request.transition.Transition
 import com.example.news.R
 import com.example.news.activity.BaseTitleActivity
 import com.example.news.activity.BaseViewModelActivity
+import com.example.news.component.confirmorder.ConfirmOrderActivity
 import com.example.news.component.product.Product
 import com.example.news.databinding.ActivityProductDetailBinding
 import com.example.news.util.ImageUtil
@@ -160,15 +161,15 @@ class ProductDetailActivity : BaseViewModelActivity<ActivityProductDetailBinding
                 }
         }
 
-//        lifecycleScope.launch {
-//            viewModel.purchasePage
-//                .collect { data ->
-//                    startActivityExtraId(
-//                        ConfirmOrderActivity::class.java,
-//                        data
-//                    )
-//                }
-//        }
+        lifecycleScope.launch {
+            viewModel.purchasePage
+                .collect { data ->
+                    startActivityExtraId(
+                        ConfirmOrderActivity::class.java,
+                        data
+                    )
+                }
+        }
 //
 //        lifecycleScope.launch {
 //            viewModel.stock
@@ -212,9 +213,9 @@ class ProductDetailActivity : BaseViewModelActivity<ActivityProductDetailBinding
 //            viewModel.addCart()
 //        }
 //
-//        binding.primary.setOnClickListener {
-//            viewModel.confirmOrder()
-//        }
+        binding.primary.setOnClickListener {
+            viewModel.confirmOrder()
+        }
 //
 //        binding.share.setOnClickListener {
 //            ShareImageActivity.start(hostActivity, viewModel.product)

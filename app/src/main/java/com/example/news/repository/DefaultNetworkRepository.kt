@@ -4,9 +4,14 @@ import com.example.news.component.ad.Ad
 import com.example.news.component.address.Address
 import com.example.news.component.api.DefaultNetworkService
 import com.example.news.component.comment.Comment
+import com.example.news.component.confirmorder.ConfirmOrderResponse
+import com.example.news.component.confirmorder.OrderRequest
 import com.example.news.component.content.Content
 import com.example.news.component.input.CodeRequest
 import com.example.news.component.login.Session
+import com.example.news.component.order.Order
+import com.example.news.component.pay.PayRequest
+import com.example.news.component.pay.PayResponse
 import com.example.news.component.product.Product
 import com.example.news.component.user.User
 import com.example.news.entity.Base
@@ -105,5 +110,33 @@ object DefaultNetworkRepository {
 //    suspend fun recognitionAddress(data: DataRequest): DetailResponse<Address> {
 //        return service.recognitionAddress(data)
 //    }
+    //endregion
+
+    //region 订单
+    suspend fun confirmOrder(
+        data: OrderRequest
+    ): DetailResponse<ConfirmOrderResponse> {
+        return service.confirmOrder(data)
+    }
+
+    suspend fun createOrder(
+        data: OrderRequest
+    ): DetailResponse<BaseId> {
+        return service.createOrder(data)
+    }
+
+    suspend fun orderDetail(id: String): DetailResponse<Order> {
+        return service.orderDetail(id)
+    }
+
+    suspend fun orderPay(id: String, data: PayRequest): DetailResponse<PayResponse> {
+        return service.orderPay(id, data)
+    }
+
+    suspend fun orders(
+        status: Int
+    ): ListResponse<Order> {
+        return service.orders(status)
+    }
     //endregion
 }
