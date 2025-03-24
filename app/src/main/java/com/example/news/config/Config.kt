@@ -36,12 +36,12 @@ object Config {
     /**
      * 阿里云OSS AK
      */
-    const val ALIYUN_AK = "LTAI4Fr1njmWpE4E5uGrMtqk"
+    const val ALIYUN_AK = BuildConfig.ALIYUN_AK
 
     /**
      * 阿里云OSS SK
      */
-    const val ALIYUN_SK = "XLCBiAGLN1ad1DWUE3ExAux9lxmRue"
+    const val ALIYUN_SK = BuildConfig.ALIYUN_SK
 
     /**
      * 阿里云OSS Bucket
