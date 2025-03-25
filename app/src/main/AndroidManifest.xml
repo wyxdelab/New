@@ -57,15 +57,20 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".component.order.OrderActivity"
+            android:exported="false"
+            android:label="@string/my_order"
+            android:theme="@style/SuperUI.NoActionBar.Grey"/>
+        <activity
             android:name=".component.orderdetail.OrderDetailActivity"
             android:exported="false"
-            android:label=""
-            android:theme="@style/SuperUI.NoActionBar.Grey"/>
+            android:label="@string/order_detail"
+            android:theme="@style/SuperUI.NoActionBar.Grey" />
         <activity
             android:name=".component.pay.PayActivity"
             android:exported="false"
-            android:theme="@style/SuperUI.NoActionBar.Grey"
-            android:label=""/>
+            android:label=""
+            android:theme="@style/SuperUI.NoActionBar.Grey" />
         <activity
             android:name=".component.confirmorder.ConfirmOrderActivity"
             android:exported="false"

@@ -16,6 +16,7 @@ import com.example.news.component.ad.Ad
 import com.example.news.component.address.AddressActivity
 import com.example.news.component.login.LoginHomeActivity
 import com.example.news.component.login.LoginViewModel
+import com.example.news.component.order.OrderActivity
 import com.example.news.component.product.ProductActivity
 import com.example.news.component.user.User
 import com.example.news.component.userdetail.UserDetailActivity
@@ -197,6 +198,13 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
                 startActivity(AddressActivity::class.java)
             }
 
+        }
+
+        binding.order.setOnClickListener {
+            loginAfter {
+                closeDrawer()
+                startActivity(OrderActivity::class.java)
+            }
         }
 
     }
