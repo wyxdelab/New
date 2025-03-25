@@ -12,6 +12,7 @@ import com.example.news.R
 import com.example.news.activity.BaseTitleActivity
 import com.example.news.component.address.AddressActivity
 import com.example.news.component.address.AddressChangedEvent
+import com.example.news.component.pay.PayActivity
 import com.example.news.component.product.Product
 import com.example.news.databinding.ActivityConfirmOrderBinding
 import com.example.news.databinding.ItemOrderProductBinding
@@ -39,6 +40,13 @@ class ConfirmOrderActivity : BaseTitleActivity<ActivityConfirmOrderBinding>() {
                 }
         }
 
+        lifecycleScope.launch {
+            viewModel.toPay
+                .collect { data ->
+                    finish()
+                    PayActivity.startFromConfirmOrder(hostActivity, data)
+                }
+        }
         viewModel.loadData()
     }
 
@@ -110,6 +118,10 @@ class ConfirmOrderActivity : BaseTitleActivity<ActivityConfirmOrderBinding>() {
 
         receiveEvent<AddressChangedEvent> {
             viewModel.setAddressId(it.data.id!!)
+        }
+
+        binding.primary.setOnClickListener {
+            viewModel.createOrder()
         }
     }
 }

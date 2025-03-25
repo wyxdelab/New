@@ -132,7 +132,7 @@ object Constant {
 
     const val STYLE_CONFIRM_ORDER = 10
     const val STYLE_ORDER = 11
-
+    const val STYLE_SHIPPED = 12
     /**
      * 左侧（其他人）文本消息
      */

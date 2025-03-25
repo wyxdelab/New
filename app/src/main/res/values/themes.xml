@@ -244,4 +244,18 @@
         <item name="android:paddingBottom">0dp</item>
         <item name="android:minHeight">10dp</item>
     </style>
+
+    <!--设置Icon-->
+
+    <style name="SuperSettingIcon.Large">
+        <item name="android:layout_width">@dimen/d30</item>
+        <item name="android:layout_height">@dimen/d30</item>
+        <item name="tint">@null</item>
+    </style>
+
+    <!--设置标题次要-->
+    <style name="SuperSettingTitle.Second">
+        <item name="android:textColor">@color/black80</item>
+        <item name="android:textSize">@dimen/text_meddle</item>
+    </style>
 </resources>

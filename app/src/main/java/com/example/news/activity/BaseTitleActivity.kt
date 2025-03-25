@@ -46,7 +46,7 @@ open class BaseTitleActivity<VB: ViewBinding>:BaseViewModelActivity<VB>() {
         when (item.itemId) {
             android.R.id.home ->
                 //Toolbar返回按钮点击
-                finish()
+                onBackPressed()
         }
         return super.onOptionsItemSelected(item)
     }

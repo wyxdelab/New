@@ -46,6 +46,7 @@
     <string name="hint_pay_wait">支付确认中</string>
     <string name="error_pay_cancel">支付取消</string>
     <string name="error_pay_failed">支付失败</string>
+    <string name="pay_success">支付成功</string>
     <string name="buy_count">%1$d人购买</string>
     <string name="reset">重置</string>
     <string name="change_style">切换样式</string>
