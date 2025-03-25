@@ -2,6 +2,7 @@ package com.ixuea.courses.mymusic.component.productdetail
 
 import androidx.lifecycle.viewModelScope
 import com.example.news.R
+import com.example.news.component.cart.Cart
 import com.example.news.component.product.Product
 import com.example.news.entity.response.onSuccess
 import com.example.news.model.BaseViewModel
@@ -33,16 +34,16 @@ class ProductDetailViewModel(private val id: String) : BaseViewModel() {
             _purchasePage.emit(id)
         }
     }
-//
-//    fun addCart() {
-//        val param = Cart()
-//        param.productId = id
-//        viewModelScope.launch(coroutineExceptionHandler) {
-//            DefaultNetworkRepository.addProductToCart(param).onSuccess(viewModel) {
-//                _tip.value = R.string.add_cart_success
-//            }
-//        }
-//    }
+
+    fun addCart() {
+        val param = Cart()
+        param.productId = id
+        viewModelScope.launch(coroutineExceptionHandler) {
+            DefaultNetworkRepository.addProductToCart(param).onSuccess(viewModel) {
+                _tip.value = R.string.add_cart_success
+            }
+        }
+    }
 
     private val _data = MutableSharedFlow<Product>()
     val data: Flow<Product> = _data

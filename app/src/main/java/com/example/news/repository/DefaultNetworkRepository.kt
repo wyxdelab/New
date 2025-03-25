@@ -3,6 +3,7 @@ package com.example.news.repository
 import com.example.news.component.ad.Ad
 import com.example.news.component.address.Address
 import com.example.news.component.api.DefaultNetworkService
+import com.example.news.component.cart.Cart
 import com.example.news.component.comment.Comment
 import com.example.news.component.confirmorder.ConfirmOrderResponse
 import com.example.news.component.confirmorder.OrderRequest
@@ -137,6 +138,28 @@ object DefaultNetworkRepository {
         status: Int
     ): ListResponse<Order> {
         return service.orders(status)
+    }
+    //endregion
+
+    //region 购物车
+    suspend fun carts(): ListResponse<Cart> {
+        return service.carts()
+    }
+
+    suspend fun editCart(
+        data: Cart
+    ): DetailResponse<Base> {
+        return service.editCart(data.id!!, data)
+    }
+
+    suspend fun addProductToCart(
+        data: Cart
+    ): DetailResponse<Base> {
+        return service.addProductToCart(data)
+    }
+
+    suspend fun deleteCarts(data: List<String>): DetailResponse<Base> {
+        return service.deleteCarts(data)
     }
     //endregion
 }

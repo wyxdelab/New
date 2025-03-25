@@ -3,6 +3,7 @@ package com.example.news.component.api
 
 import com.example.news.component.ad.Ad
 import com.example.news.component.address.Address
+import com.example.news.component.cart.Cart
 import com.example.news.component.comment.Comment
 import com.example.news.component.confirmorder.ConfirmOrderResponse
 import com.example.news.component.confirmorder.OrderRequest
@@ -191,21 +192,21 @@ interface DefaultNetworkService {
     ): DetailResponse<PayResponse>
 
 //    //region 购物车
-//    @GET("v1/carts")
-//    suspend fun carts(): ListResponse<Cart>
-//
-//    @PATCH("v1/carts/{id}")
-//    suspend fun editCart(
-//        @Path("id") id: String, @Body data: Cart
-//    ): DetailResponse<Base>
-//
-//    @POST("v1/carts")
-//    suspend fun addProductToCart(
-//        @Body data: Cart
-//    ): DetailResponse<Base>
-//
-//    @POST("v1/carts/batch_delete")
-//    suspend fun deleteCarts(@Body data: List<String>): DetailResponse<Base>
+    @GET("v1/carts")
+    suspend fun carts(): ListResponse<Cart>
+
+    @PATCH("v1/carts/{id}")
+    suspend fun editCart(
+        @Path("id") id: String, @Body data: Cart
+    ): DetailResponse<Base>
+
+    @POST("v1/carts")
+    suspend fun addProductToCart(
+        @Body data: Cart
+    ): DetailResponse<Base>
+
+    @POST("v1/carts/batch_delete")
+    suspend fun deleteCarts(@Body data: List<String>): DetailResponse<Base>
 //    //endregion
 //
 //    @POST("v1/friends")

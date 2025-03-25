@@ -208,11 +208,11 @@ class ProductDetailActivity : BaseViewModelActivity<ActivityProductDetailBinding
             binding!!.indicator.alpha = (alpha / 255.0).toFloat()
         })
 
-        //添加到购物车按钮点击
-//        binding.addCart.setOnClickListener {
-//            viewModel.addCart()
-//        }
-//
+//        添加到购物车按钮点击
+        binding.addCart.setOnClickListener {
+            viewModel.addCart()
+        }
+
         binding.primary.setOnClickListener {
             viewModel.confirmOrder()
         }

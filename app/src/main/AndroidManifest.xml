@@ -57,10 +57,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".component.cart.CartActivity"
+            android:exported="false"
+            android:label=""/>
+        <activity
             android:name=".component.order.OrderActivity"
             android:exported="false"
             android:label="@string/my_order"
-            android:theme="@style/SuperUI.NoActionBar.Grey"/>
+            android:theme="@style/SuperUI.NoActionBar.Grey" />
         <activity
             android:name=".component.orderdetail.OrderDetailActivity"
             android:exported="false"

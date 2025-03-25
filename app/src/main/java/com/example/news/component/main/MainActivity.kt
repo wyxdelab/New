@@ -14,6 +14,7 @@ import com.example.news.R
 import com.example.news.activity.BaseViewModelActivity
 import com.example.news.component.ad.Ad
 import com.example.news.component.address.AddressActivity
+import com.example.news.component.cart.CartActivity
 import com.example.news.component.login.LoginHomeActivity
 import com.example.news.component.login.LoginViewModel
 import com.example.news.component.order.OrderActivity
@@ -204,6 +205,13 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
             loginAfter {
                 closeDrawer()
                 startActivity(OrderActivity::class.java)
+            }
+        }
+
+        binding.cart.setOnClickListener {
+            loginAfter {
+                closeDrawer()
+                startActivity(CartActivity::class.java)
             }
         }
 

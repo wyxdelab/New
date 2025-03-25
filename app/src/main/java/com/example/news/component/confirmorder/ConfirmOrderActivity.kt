@@ -1,5 +1,7 @@
 package com.example.news.component.confirmorder
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +30,7 @@ class ConfirmOrderActivity : BaseTitleActivity<ActivityConfirmOrderBinding>() {
     override fun initDatum() {
         super.initDatum()
 
-        val viewModelFactory = ConfirmOrderViewModelFactory(extraId(), getIntent().getStringArrayListExtra(Constant.DATA))
+        val viewModelFactory = ConfirmOrderViewModelFactory(intent.getStringExtra(Constant.ID), getIntent().getStringArrayListExtra(Constant.DATA))
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(ConfirmOrderViewModel::class.java)
         initViewModel(viewModel)
@@ -122,6 +124,19 @@ class ConfirmOrderActivity : BaseTitleActivity<ActivityConfirmOrderBinding>() {
 
         binding.primary.setOnClickListener {
             viewModel.createOrder()
+        }
+    }
+
+    companion object {
+        /**
+         * 购物车进入
+         *
+         * @param context
+         */
+        fun startWithCarts(context: Context, carts: ArrayList<String>) {
+            val intent = Intent(context, ConfirmOrderActivity::class.java)
+            intent.putExtra(Constant.DATA, carts)
+            context.startActivity(intent)
         }
     }
 }
