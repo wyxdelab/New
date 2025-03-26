@@ -234,7 +234,7 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
                 val intent = Intent(Intent.ACTION_VIEW)
                 val uri = Uri.parse(data.uri)
 
-                //例如：打开我们在腾讯课程上的仿微信项目课程详情页面
+
 //            val uri = Uri.parse("tencentedu://openpage/coursedetail?courseid=4875119&termid=103425768&taid=11008662607906617&fromWeb=1&sessionPath=165013705913519225082472#");
 //            val uri = Uri.parse("http://www.ixuea.com/")
                 intent.data = uri

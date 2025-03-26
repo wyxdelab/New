@@ -4,8 +4,9 @@ import android.os.Parcel
 import android.os.Parcelable
 import android.text.TextUtils
 import com.example.news.entity.Common
+import org.apache.commons.lang3.StringUtils
 
-class User: Common() {
+class User: Common {
     /**
      * 昵称
      */
@@ -147,68 +148,68 @@ class User: Common() {
 
     //endregion
 //
-//    constructor() : super()
-//
-//    constructor(parcel: Parcel) : super(parcel) {
-//        nickname = parcel.readString()
-//        icon = parcel.readString()
-//        phone = parcel.readString()
-//        email = parcel.readString()
-//        password = parcel.readString()
-//        wechatId = parcel.readString()
-//        qqId = parcel.readString()
-//        code = parcel.readString()
-//        detail = parcel.readString()
-//        province = parcel.readString()
-//        provinceCode = parcel.readString()
-//        city = parcel.readString()
-//        cityCode = parcel.readString()
-//        area = parcel.readString()
-//        areaCode = parcel.readString()
-//        followingsCount = parcel.readLong()
-//        followersCount = parcel.readLong()
-//        following = parcel.readString()
-//        gender = parcel.readInt()
-//        birthday = parcel.readString()
-//        device = parcel.readString()
-//        push = parcel.readString()
-//        pinyin = parcel.readString()
-//        pinyinFirst = parcel.readString()
-//        first = parcel.readString()
-//    }
-//
-//    override fun writeToParcel(parcel: Parcel, flags: Int) {
-//        super.writeToParcel(parcel, flags)
-//        parcel.writeString(nickname)
-//        parcel.writeString(icon)
-//        parcel.writeString(phone)
-//        parcel.writeString(email)
-//        parcel.writeString(password)
-//        parcel.writeString(wechatId)
-//        parcel.writeString(qqId)
-//        parcel.writeString(code)
-//        parcel.writeString(detail)
-//        parcel.writeString(province)
-//        parcel.writeString(provinceCode)
-//        parcel.writeString(city)
-//        parcel.writeString(cityCode)
-//        parcel.writeString(area)
-//        parcel.writeString(areaCode)
-//        parcel.writeLong(followingsCount)
-//        parcel.writeLong(followersCount)
-//        parcel.writeString(following)
-//        parcel.writeInt(gender)
-//        parcel.writeString(birthday)
-//        parcel.writeString(device)
-//        parcel.writeString(push)
-//        parcel.writeString(pinyin)
-//        parcel.writeString(pinyinFirst)
-//        parcel.writeString(first)
-//    }
-//
-//    override fun describeContents(): Int {
-//        return 0
-//    }
+    constructor() : super()
+
+    constructor(parcel: Parcel) : super(parcel) {
+        nickname = parcel.readString()
+        icon = parcel.readString()
+        phone = parcel.readString()
+        email = parcel.readString()
+        password = parcel.readString()
+        wechatId = parcel.readString()
+        qqId = parcel.readString()
+        code = parcel.readString()
+        detail = parcel.readString()
+        province = parcel.readString()
+        provinceCode = parcel.readString()
+        city = parcel.readString()
+        cityCode = parcel.readString()
+        area = parcel.readString()
+        areaCode = parcel.readString()
+        followingsCount = parcel.readLong()
+        followersCount = parcel.readLong()
+        following = parcel.readString()
+        gender = parcel.readInt()
+        birthday = parcel.readString()
+        device = parcel.readString()
+        push = parcel.readString()
+        pinyin = parcel.readString()
+        pinyinFirst = parcel.readString()
+        first = parcel.readString()
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        super.writeToParcel(parcel, flags)
+        parcel.writeString(nickname)
+        parcel.writeString(icon)
+        parcel.writeString(phone)
+        parcel.writeString(email)
+        parcel.writeString(password)
+        parcel.writeString(wechatId)
+        parcel.writeString(qqId)
+        parcel.writeString(code)
+        parcel.writeString(detail)
+        parcel.writeString(province)
+        parcel.writeString(provinceCode)
+        parcel.writeString(city)
+        parcel.writeString(cityCode)
+        parcel.writeString(area)
+        parcel.writeString(areaCode)
+        parcel.writeLong(followingsCount)
+        parcel.writeLong(followersCount)
+        parcel.writeString(following)
+        parcel.writeInt(gender)
+        parcel.writeString(birthday)
+        parcel.writeString(device)
+        parcel.writeString(push)
+        parcel.writeString(pinyin)
+        parcel.writeString(pinyinFirst)
+        parcel.writeString(first)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
 
     /**
      * 是否关注了
@@ -233,11 +234,11 @@ class User: Common() {
         }
     }
 
-//    fun birthdayFormat(): String? {
-//        return if (StringUtils.isBlank(birthday)) {
-//            ""
-//        } else birthday
-//    }
+    fun birthdayFormat(): String? {
+        return if (StringUtils.isBlank(birthday)) {
+            ""
+        } else birthday
+    }
 
     /**
      * 格式化后的描述
@@ -266,15 +267,17 @@ class User: Common() {
          */
         const val FEMALE = 20
 
-//        @JvmField
-//        val CREATOR = object : Parcelable.Creator<User> {
-//            override fun createFromParcel(parcel: Parcel): User {
-//                return User(parcel)
-//            }
-//
-//            override fun newArray(size: Int): Array<User?> {
-//                return arrayOfNulls(size)
-//            }
-//        }
+        @JvmField
+        val CREATOR = object : Parcelable.Creator<User> {
+            override fun createFromParcel(parcel: Parcel): User {
+                return User(parcel)
+            }
+
+            override fun newArray(size: Int): Array<User?> {
+                return arrayOfNulls(size)
+            }
+        }
     }
+
+
 }

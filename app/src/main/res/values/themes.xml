@@ -258,4 +258,23 @@
         <item name="android:textColor">@color/black80</item>
         <item name="android:textSize">@dimen/text_meddle</item>
     </style>
+
+    <!--设置更多按钮-->
+    <style name="SettingMoreButton">
+        <item name="android:layout_width">@dimen/button_width</item>
+        <item name="android:layout_height">@dimen/button_height_small</item>
+        <item name="android:textSize">@dimen/text_meddle</item>
+        <item name="android:textColor">@color/black80</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--设置更多输入框-->
+    <style name="SettingMoreInput">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_meddle</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/black80</item>
+    </style>
 </resources>

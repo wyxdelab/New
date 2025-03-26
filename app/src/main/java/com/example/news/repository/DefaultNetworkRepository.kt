@@ -4,6 +4,7 @@ import com.example.news.component.ad.Ad
 import com.example.news.component.address.Address
 import com.example.news.component.api.DefaultNetworkService
 import com.example.news.component.cart.Cart
+import com.example.news.component.category.Category
 import com.example.news.component.comment.Comment
 import com.example.news.component.confirmorder.ConfirmOrderResponse
 import com.example.news.component.confirmorder.OrderRequest
@@ -19,6 +20,7 @@ import com.example.news.entity.Base
 import com.example.news.entity.BaseId
 import com.example.news.entity.response.DetailResponse
 import com.example.news.entity.response.ListResponse
+import com.example.news.util.Constant
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -162,4 +164,57 @@ object DefaultNetworkRepository {
         return service.deleteCarts(data)
     }
     //endregion
+
+    suspend fun follow(
+        data: String
+    ): DetailResponse<BaseId> {
+        return service.follow(mapOf("id" to data))
+    }
+
+    suspend fun deleteFollow(
+        data: String
+    ): DetailResponse<BaseId> {
+        return service.deleteFollow(data)
+    }
+
+    suspend fun friends(id: String): ListResponse<User> {
+        return service.friends(id)
+    }
+
+    suspend fun fans(id: String): ListResponse<User> {
+        return service.fans(id)
+    }
+
+    suspend fun categories(
+        parent: String? = null,
+    ): ListResponse<Category> {
+        return service.categories(parent)
+    }
+
+    suspend fun searchContent(data: String): ListResponse<Content> {
+        return service.searchContent(getSearchParams(data))
+    }
+
+    suspend fun searchUser(data: String): ListResponse<User> {
+        return service.searchUser(getSearchParams(data))
+    }
+
+    suspend fun updateUser(
+        data: User
+    ): DetailResponse<Base> {
+        return service.updateUser(data.id!!, data)
+    }
+    /**
+     * 获取查询参数
+     *
+     * @param data
+     * @return
+     */
+    private fun getSearchParams(data: String): Map<String, String> {
+        val datum = HashMap<String, String>()
+
+        //添加查询参数
+        datum[Constant.QUERY] = data
+        return datum
+    }
 }

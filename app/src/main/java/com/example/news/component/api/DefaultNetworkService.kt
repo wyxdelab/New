@@ -4,6 +4,7 @@ package com.example.news.component.api
 import com.example.news.component.ad.Ad
 import com.example.news.component.address.Address
 import com.example.news.component.cart.Cart
+import com.example.news.component.category.Category
 import com.example.news.component.comment.Comment
 import com.example.news.component.confirmorder.ConfirmOrderResponse
 import com.example.news.component.confirmorder.OrderRequest
@@ -209,43 +210,43 @@ interface DefaultNetworkService {
     suspend fun deleteCarts(@Body data: List<String>): DetailResponse<Base>
 //    //endregion
 //
-//    @POST("v1/friends")
-//    suspend fun follow(
-//        @Body data: Map<String, String>
-//    ): DetailResponse<BaseId>
-//
-//    @DELETE("v1/friends/{id}")
-//    suspend fun deleteFollow(
-//        @Path("id") data: String
-//    ): DetailResponse<BaseId>
-//
-//    /**
-//     * 好友列表（我关注的人）
-//     *
-//     * @param id
-//     * @return
-//     */
-//    @GET("v1/users/{id}/following")
-//    suspend fun friends(@Path("id") id: String): ListResponse<User>
-//
-//    /**
-//     * 粉丝列表（关注我的人）
-//     *
-//     * @param id
-//     * @return
-//     */
-//    @GET("v1/users/{id}/followers")
-//    suspend fun fans(@Path("id") id: String): ListResponse<User>
-//
-//    @GET("v1/categories")
-//    suspend fun categories(@Query(value = "parent") parent: String? = null): ListResponse<Category>
-//
-//    //region 搜索
-//    @GET("v1/searches/contents")
-//    suspend fun searchContent(@QueryMap data: Map<String, String>): ListResponse<Content>
-//
-//    @GET("v1/searches/users")
-//    suspend fun searchUser(@QueryMap data: Map<String, String>): ListResponse<User>
+    @POST("v1/friends")
+    suspend fun follow(
+        @Body data: Map<String, String>
+    ): DetailResponse<BaseId>
+
+    @DELETE("v1/friends/{id}")
+    suspend fun deleteFollow(
+        @Path("id") data: String
+    ): DetailResponse<BaseId>
+
+    /**
+     * 好友列表（我关注的人）
+     *
+     * @param id
+     * @return
+     */
+    @GET("v1/users/{id}/following")
+    suspend fun friends(@Path("id") id: String): ListResponse<User>
+
+    /**
+     * 粉丝列表（关注我的人）
+     *
+     * @param id
+     * @return
+     */
+    @GET("v1/users/{id}/followers")
+    suspend fun fans(@Path("id") id: String): ListResponse<User>
+
+    @GET("v1/categories")
+    suspend fun categories(@Query(value = "parent") parent: String? = null): ListResponse<Category>
+
+    //region 搜索
+    @GET("v1/searches/contents")
+    suspend fun searchContent(@QueryMap data: Map<String, String>): ListResponse<Content>
+
+    @GET("v1/searches/users")
+    suspend fun searchUser(@QueryMap data: Map<String, String>): ListResponse<User>
 //
 //    /**
 //     * 搜索建议

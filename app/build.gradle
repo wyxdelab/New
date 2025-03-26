@@ -240,4 +240,11 @@ dependencies {
     //支付宝支付
     //https://opendocs.alipay.com/open/204/105296
     implementation 'com.alipay.sdk:alipaysdk-android:+@aar'
+
+    //RecyclerView 下拉刷新/加载更多、item点击/长按、头布局/尾布局/状态布局、万能分割线、Skeleton骨架图、极简adapter、嵌套滑动置顶
+    //使用该框架需要使用它提供的ByRecyclerView控件，所以依赖性比较强，但很多功能直接集成了，也更方便
+    //https://github.com/youlookwhat/ByRecyclerView
+    //骨架实现内部引用了：https://github.com/team-supercharge/ShimmerLayout
+    //对于普通view，可以按照该框架主页介绍的使用，在用户详情顶部就是用这种方式实现
+    implementation 'com.github.youlookwhat:ByRecyclerView:1.3.6'
 }
