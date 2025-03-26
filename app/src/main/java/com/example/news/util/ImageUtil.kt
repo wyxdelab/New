@@ -71,7 +71,7 @@ object ImageUtil {
 //            )
 
             //获取通用配置
-//            val options: RequestOptions = getCommonRequestOptions(round)
+            val options: RequestOptions = getCommonRequestOptions(round)
 
             Glide.with(view).load(
                 url

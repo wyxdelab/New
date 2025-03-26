@@ -18,7 +18,11 @@ import com.drake.channel.sendEvent
 import com.example.news.R
 import com.example.news.activity.BaseTitleActivity
 import com.example.news.component.content.ImageAdaptor
+import com.example.news.component.user.SelectedFriendEvent
+import com.example.news.component.user.UserActivity
 import com.example.news.databinding.ActivityPublishBinding
+import com.example.news.util.Constant
+import com.example.news.util.RichUtil
 import com.example.superui.decoration.GridDividerItemDecoration
 import com.example.superui.util.DensityUtil
 import com.google.common.collect.Lists
@@ -95,12 +99,12 @@ class PublishActivity : BaseTitleActivity<ActivityPublishBinding>() {
             val result = getString(R.string.feed_count, r.length)
             binding.count.text = result
 
-//            if (r.endsWith(RichUtil.MENTION)) {
-//                //输入了@
-//
-//                //跳转到选择好友界面
-//                UserActivity.start(hostActivity, Constant.STYLE_FRIEND_SELECT)
-//            }
+            if (r.endsWith(RichUtil.MENTION)) {
+                //输入了@
+
+                //跳转到选择好友界面
+                UserActivity.start(hostActivity, Constant.STYLE_FRIEND_SELECT)
+            }
 
         }
 
@@ -115,18 +119,18 @@ class PublishActivity : BaseTitleActivity<ActivityPublishBinding>() {
         adapter.addOnItemChildClickListener(R.id.close) { adapter, view, position ->
             adapter.removeAt(position)
         }
-//
-//        receiveEvent<SelectedFriendEvent> {
-//            //添加用户
-//            // 当然如何要实现的更好，就是添加到用户光标位置
-//            //如果有选中，就是替换，这里就不再实现了，因为还挺麻烦，在微聊项目课程中有实现
-//            binding.content.append(it.data.nickname)
-//
-//            //添加结尾符号
-//            binding.content.append(" ")
-//
+
+        receiveEvent<SelectedFriendEvent> {
+            //添加用户
+            // 当然如何要实现的更好，就是添加到用户光标位置
+            //如果有选中，就是替换，这里就不再实现了，因为还挺麻烦，在微聊项目课程中有实现
+            binding.content.append(it.data.nickname)
+
+            //添加结尾符号
+            binding.content.append(" ")
+
 //            highlightText()
-//        }
+        }
 //
 //        receiveEvent<SelectLocationEvent> {
 //            viewModel.setLocation(it.data)

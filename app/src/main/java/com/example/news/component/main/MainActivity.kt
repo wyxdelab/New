@@ -15,11 +15,14 @@ import com.example.news.activity.BaseViewModelActivity
 import com.example.news.component.ad.Ad
 import com.example.news.component.address.AddressActivity
 import com.example.news.component.cart.CartActivity
+import com.example.news.component.code.CodeActivity
 import com.example.news.component.login.LoginHomeActivity
 import com.example.news.component.login.LoginViewModel
 import com.example.news.component.order.OrderActivity
 import com.example.news.component.product.ProductActivity
+import com.example.news.component.scan.ScanActivity
 import com.example.news.component.user.User
+import com.example.news.component.user.UserActivity
 import com.example.news.component.userdetail.UserDetailActivity
 import com.example.news.component.web.WebActivity
 import com.example.news.databinding.ActivityMainBinding
@@ -212,6 +215,37 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
             loginAfter {
                 closeDrawer()
                 startActivity(CartActivity::class.java)
+            }
+        }
+
+        binding.myCode.setOnClickListener {
+            loginAfter {
+                closeDrawer()
+                startActivityExtraId(CodeActivity::class.java, PreferenceUtil.getUserId())
+            }
+        }
+
+        binding.scan.setOnClickListener {
+            closeDrawer()
+            startActivity(ScanActivity::class.java)
+        }
+
+        binding.friendContainer.setOnClickListener { v ->
+            loginAfter {
+                closeDrawer()
+                UserActivity.start(
+                    hostActivity,
+                    Constant.STYLE_FRIEND
+                )
+            }
+        }
+        binding.fansContainer.setOnClickListener { v ->
+            loginAfter {
+                closeDrawer()
+                UserActivity.start(
+                    hostActivity,
+                    Constant.STYLE_FANS
+                )
             }
         }
 

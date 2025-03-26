@@ -260,4 +260,21 @@ dependencies {
 
     //emoji控件
     implementation 'androidx.emoji:emoji-bundled:1.2.0-alpha03'
+
+    //二维码生成扫描框架
+    //https://github.com/jenly1314/ZXingLite
+    implementation 'com.github.jenly1314:ZXingLite:2.4.0'
+
+    //类似微信联系人界面右侧字母索引
+    //https://github.com/lgdcoder/LetterIndexView
+    implementation project(path: ':super-letter-index')
+
+    //Hutool是一个小而全的Java工具类库
+    // 通过静态方法封装，降低相关API的学习成本
+    // 提高工作效率，使Java拥有函数式语言般的优雅
+    //https://github.com/looly/hutool
+    implementation 'cn.hutool:hutool-all:5.8.18'
+
+    //https://hutool.cn/docs/#/extra/%E6%8B%BC%E9%9F%B3/%E6%8B%BC%E9%9F%B3%E5%B7%A5%E5%85%B7-PinyinUtil
+    implementation 'io.github.biezhi:TinyPinyin:2.0.3.RELEASE'
 }

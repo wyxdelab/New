@@ -7,6 +7,7 @@ import com.drake.channel.receiveEvent
 import com.example.news.R
 import com.example.news.component.address.AddressActivity
 import com.example.news.component.cart.CartActivity
+import com.example.news.component.code.CodeActivity
 import com.example.news.component.login.LoginHomeActivity
 import com.example.news.component.login.LoginStatusChangedEvent
 import com.example.news.component.order.OrderActivity
@@ -115,7 +116,7 @@ class MeFragment: BaseViewModelFragment<FragmentMeBinding>() {
         }
 
         binding.code.setOnClickListener {
-//            startActivityExtraId(CodeActivity::class.java,PreferenceUtil.getUserId())
+            startActivityExtraId(CodeActivity::class.java,PreferenceUtil.getUserId())
         }
     }
     companion object {
