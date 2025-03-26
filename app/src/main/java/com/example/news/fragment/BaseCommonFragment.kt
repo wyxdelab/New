@@ -27,4 +27,16 @@ abstract class BaseCommonFragment:BaseFragement() {
 
         startActivity(intent)
     }
+
+    /**
+     * 启动界面
+     * @param clazz
+     */
+    protected fun startActivity(clazz: Class<*>) {
+        //创建Intent
+        val intent = Intent(requireActivity(), clazz)
+
+        //启动界面
+        startActivity(intent)
+    }
 }

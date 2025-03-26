@@ -1,10 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/colorDivider"
+    android:orientation="vertical"
+    tools:context=".component.me.MeFragment">
 
-    <TextView
+    <!--region 标题容器-->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="me"/>
+        android:background="?attr/colorSurface"
+        android:fitsSystemWindows="true">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="40dp" />
+    </LinearLayout>
+    <!--endregion-->
+
+    <LinearLayout
+        android:id="@+id/profile"
+        style="@style/SuperSettingContainer"
+        android:layout_marginTop="0dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/icon"
+            style="@style/ChangeAvatar"
+            android:layout_width="@dimen/d65"
+            android:layout_height="@dimen/d65"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder"
+            app:shapeAppearanceOverlay="@style/RoundedCornerImageStyle" />
+
+
+        <LinearLayout
+            android:layout_width="278dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d15"
+                android:text="爱学啊"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="@dimen/s20"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d15"
+                android:layout_marginTop="@dimen/d12"
+                android:text="@string/message_no_format"
+                android:textColor="@color/black80"
+                android:textSize="@dimen/s14" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/code"
+            style="@style/SettingQRCode"
+            app:tint="@color/super_light_grey" />
+
+        <ImageView style="@style/SuperSettingMore" />
+    </LinearLayout>
+
+    <!--region 一个设置-->
+    <LinearLayout
+        android:id="@+id/friend_container"
+        style="@style/SuperSettingContainer.Large"
+        android:layout_marginTop="@dimen/d10"
+        android:clickable="false"
+        android:visibility="gone">
+
+        <ImageView
+            style="@style/SuperSettingIcon"
+            android:src="@drawable/permissionx_ic_setting" />
+
+        <TextView
+            style="@style/SuperSettingTitle"
+            android:text="@string/my_friend" />
+
+        <ImageView style="@style/SuperSettingMore" />
+    </LinearLayout>
+    <!--endregion-->
+
+    <!--region 一个设置-->
+    <LinearLayout
+        android:id="@+id/fans_container"
+        style="@style/SuperSettingContainer.Large"
+        android:clickable="false"
+        android:visibility="gone">
+
+        <ImageView
+            style="@style/SuperSettingIcon"
+            android:src="@drawable/permissionx_ic_setting" />
+
+        <TextView
+            style="@style/SuperSettingTitle"
+            android:text="@string/my_fans" />
+
+        <ImageView style="@style/SuperSettingMore" />
+    </LinearLayout>
+    <!--endregion-->
+
+    <!--region 一个设置-->
+    <LinearLayout
+        android:id="@+id/mall"
+        style="@style/SuperSettingContainer.Large"
+        android:layout_marginTop="@dimen/d10"
+        android:clickable="false">
+
+        <ImageView
+            style="@style/SuperSettingIcon"
+            android:src="@drawable/permissionx_ic_setting" />
+
+        <TextView
+            style="@style/SuperSettingTitle"
+            android:text="@string/mall" />
+
+        <ImageView style="@style/SuperSettingMore" />
+    </LinearLayout>
+    <!--endregion-->
+
+    <!--region 一个设置-->
+    <LinearLayout
+        android:id="@+id/order"
+        style="@style/SuperSettingContainer.Large"
+        android:clickable="false">
+
+        <ImageView
+            style="@style/SuperSettingIcon"
+            android:src="@drawable/permissionx_ic_setting" />
+
+        <TextView
+            style="@style/SuperSettingTitle"
+            android:text="@string/my_order" />
+
+        <ImageView style="@style/SuperSettingMore" />
+    </LinearLayout>
+    <!--endregion-->
+
+    <!--region 一个设置-->
+    <LinearLayout
+        android:id="@+id/cart"
+        style="@style/SuperSettingContainer.Large"
+        android:clickable="false">
+
+        <ImageView
+            style="@style/SuperSettingIcon"
+            android:src="@drawable/permissionx_ic_setting" />
+
+        <TextView
+            style="@style/SuperSettingTitle"
+            android:text="@string/shop_cart" />
+
+        <ImageView style="@style/SuperSettingMore" />
+    </LinearLayout>
+    <!--endregion-->
+
+    <!--region 一个设置-->
+    <LinearLayout
+        android:id="@+id/address"
+        style="@style/SuperSettingContainer.Large"
+        android:clickable="false">
+
+        <ImageView
+            style="@style/SuperSettingIcon"
+            android:src="@drawable/permissionx_ic_setting" />
+
+        <TextView
+            style="@style/SuperSettingTitle"
+            android:text="@string/receiving_address" />
+
+        <ImageView style="@style/SuperSettingMore" />
+    </LinearLayout>
+    <!--endregion-->
+
+    <!--region 一个设置-->
+    <LinearLayout
+        android:id="@+id/setting"
+        style="@style/SuperSettingContainer.Large"
+        android:layout_marginTop="@dimen/d10"
+        android:clickable="false">
+
+        <ImageView
+            style="@style/SuperSettingIcon"
+            android:src="@drawable/permissionx_ic_setting" />
+
+        <TextView
+            style="@style/SuperSettingTitle"
+            android:text="@string/setting" />
+
+        <ImageView style="@style/SuperSettingMore" />
+    </LinearLayout>
+    <!--endregion-->
+
+
 </LinearLayout>

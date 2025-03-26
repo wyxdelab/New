@@ -2,6 +2,8 @@ package com.example.news
 
 import android.app.Application
 import android.util.Log
+import androidx.emoji.bundled.BundledEmojiCompatConfig
+import androidx.emoji.text.EmojiCompat
 import com.drake.channel.sendEvent
 import com.example.news.component.login.LoginStatusChangedEvent
 import com.example.news.config.Config
@@ -20,6 +22,9 @@ class AppContext: Application() {
         initLog()
         val rootDir = MMKV.initialize(this)
         Log.d(TAG, "initMMKV: $rootDir")
+
+        var config = BundledEmojiCompatConfig(this)
+        EmojiCompat.init(config)
     }
 
     fun logout() {
