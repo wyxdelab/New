@@ -48,7 +48,7 @@ class ArticleDetailActivity : BaseViewModelActivity<ActivityArticleDetailBinding
         }
         articleDetailAdaptor = ArticleDetailAdaptor(viewModel)
         helper = QuickAdapterHelper.Builder(articleDetailAdaptor).build()
-        articleDetailHeaderAdapter = ArticleDetailHeaderAdapter().apply {
+        articleDetailHeaderAdapter = ArticleDetailHeaderAdapter(viewModel).apply {
             //item子控件点击
             addOnItemChildClickListener(R.id.user_container) { adapter, _, position ->
                 startActivityExtraId(UserDetailActivity::class.java, viewModel.content.user!!.id!!)

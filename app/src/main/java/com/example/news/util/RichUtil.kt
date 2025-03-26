@@ -6,6 +6,7 @@ import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.view.View
 import com.example.news.R
+import com.example.superui.text.SuperClickableSpan
 import java.util.regex.Pattern
 
 object RichUtil {
@@ -71,46 +72,46 @@ object RichUtil {
      * @param data
      * @return
      */
-//    fun processContent(
-//        context: Context,
-//        data: String,
-//        onMentionClickListener: OnTagClickListener,
-//        onHashTagClickListener: OnTagClickListener
-//    ): SpannableString {
-//        //创建结果字符串
-//        //这个就是Android中的富文本字符串
-//        val result = SpannableString(data)
-//
-//        //查找@
-//        var tags = findMentions(data)
-//
-//        for (matchResult in tags) {
-//            processInner(result, matchResult, onMentionClickListener)
-//        }
-//
-//        //匹配话题
-//        tags = findHash(data)
-//
-//        //遍历所有数据并处理
-//        for (matchResult in tags) {
-//            processInner(result, matchResult, onHashTagClickListener)
-//        }
-//
-//        //返回结果
-//        return result
-//    }
+    fun processContent(
+        context: Context,
+        data: String,
+        onMentionClickListener: OnTagClickListener,
+        onHashTagClickListener: OnTagClickListener
+    ): SpannableString {
+        //创建结果字符串
+        //这个就是Android中的富文本字符串
+        val result = SpannableString(data)
 
-//    private fun processInner(
-//        result: SpannableString,
-//        matchResult: MatchResult,
-//        tagClickListener: OnTagClickListener
-//    ) {
-//        result.setSpan(object : SuperClickableSpan() {
-//            override fun onClick(widget: View) {
-//                tagClickListener.onTagClick(matchResult.content, matchResult)
-//            }
-//        }, matchResult.start, matchResult.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-//    }
+        //查找@
+        var tags = findMentions(data)
+
+        for (matchResult in tags) {
+            processInner(result, matchResult, onMentionClickListener)
+        }
+
+        //匹配话题
+        tags = findHash(data)
+
+        //遍历所有数据并处理
+        for (matchResult in tags) {
+            processInner(result, matchResult, onHashTagClickListener)
+        }
+
+        //返回结果
+        return result
+    }
+
+    private fun processInner(
+        result: SpannableString,
+        matchResult: MatchResult,
+        tagClickListener: OnTagClickListener
+    ) {
+        result.setSpan(object : SuperClickableSpan() {
+            override fun onClick(widget: View) {
+                tagClickListener.onTagClick(matchResult.content, matchResult)
+            }
+        }, matchResult.start, matchResult.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+    }
 
     /**
      * 移除字符串中首的@

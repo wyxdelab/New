@@ -47,5 +47,9 @@ class ArticleDetailViewModel(private val id: String) : BaseViewModel() {
 
     }
 
+    fun jumpToUserDetail(userName: String) {
+        //需要通过服务端查找到用户id，从而跳转至对应的用户详情界面
+    }
+
 
 }

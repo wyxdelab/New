@@ -123,19 +123,35 @@ class PublishActivity : BaseTitleActivity<ActivityPublishBinding>() {
         receiveEvent<SelectedFriendEvent> {
             //添加用户
             // 当然如何要实现的更好，就是添加到用户光标位置
-            //如果有选中，就是替换，这里就不再实现了，因为还挺麻烦，在微聊项目课程中有实现
+            //如果有选中，就是替换，这里就不再实现了
             binding.content.append(it.data.nickname)
 
             //添加结尾符号
             binding.content.append(" ")
 
-//            highlightText()
+            highlightText()
         }
 //
 //        receiveEvent<SelectLocationEvent> {
 //            viewModel.setLocation(it.data)
 //
 //        }
+    }
+
+    /**
+     * 高亮文本
+     */
+    private fun highlightText() {
+        //高亮文本
+        binding.content.setText(
+            RichUtil.processHighlight(
+                hostActivity,
+                binding.content.text.toString()
+            )
+        )
+
+        //将光标位置移动到最后
+        binding.content.setSelection(binding.content.text.toString().length)
     }
 
     /**

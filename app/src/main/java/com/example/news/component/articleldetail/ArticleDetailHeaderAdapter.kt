@@ -11,23 +11,25 @@ import com.example.news.R
 import com.example.news.component.content.Content
 import com.example.news.databinding.HeaderArticleDetailBinding
 import com.example.news.util.ImageUtil
+import com.example.news.util.RichUtil
 import com.example.superui.util.SuperTextUtil
 import show
 import org.apache.commons.lang3.StringUtils
+import timber.log.Timber
 
 /**
  * 文章详情头部适配器
  */
-class ArticleDetailHeaderAdapter() :
+class ArticleDetailHeaderAdapter(val viewModel: ArticleDetailViewModel) :
     BaseSingleItemAdapter<Content, ArticleDetailHeaderAdapter.VH>() {
 
-    class VH(val binding: HeaderArticleDetailBinding) : RecyclerView.ViewHolder(binding.root) {
-//        init {
-//            SuperTextUtil.setLinkColor(
-//                binding.content,
-//                ContextCompat.getColor(binding.content.context, R.color.link)
-//            )
-//        }
+    inner class VH(val binding: HeaderArticleDetailBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            SuperTextUtil.setLinkColor(
+                binding.content,
+                ContextCompat.getColor(binding.content.context, R.color.link)
+            )
+        }
 
         fun bind(data: Content) {
             if (StringUtils.isNotBlank(data.title)) {
@@ -35,7 +37,7 @@ class ArticleDetailHeaderAdapter() :
                 binding.title.show()
             }
 
-            binding.content.text = data.content
+            binding.content.text = processContent(data.content!!)
 
             binding.commentCount.text =
                 binding.content.context.getString(R.string.comments_count, data.commentsCount)
@@ -63,26 +65,27 @@ class ArticleDetailHeaderAdapter() :
          * @param content
          * @return
          */
-//        private fun processContent(content: String): SpannableString {
-//            //设置点击事件
-//
-//            //返回结果
-//            return RichUtil.processContent(binding.content.context,
-//                content,
-//                object : RichUtil.OnTagClickListener {
-//                    override fun onTagClick(data: String, matchResult: RichUtil.MatchResult) {
-//                        val clickText: String = RichUtil.removePlaceholderString(data)
-//                        Timber.d("processContent mention click %s", clickText)
-//                    }
-//                },
-//                object : RichUtil.OnTagClickListener {
-//                    override fun onTagClick(data: String, matchResult: RichUtil.MatchResult) {
-//                        val clickText: String = RichUtil.removePlaceholderString(data)
-//                        Timber.d("processContent hashtag click %s", clickText)
-//                    }
-//                }
-//            )
-//        }
+        private fun processContent(content: String): SpannableString {
+            //设置点击事件
+
+            //返回结果
+            return RichUtil.processContent(binding.content.context,
+                content,
+                object : RichUtil.OnTagClickListener {
+                    override fun onTagClick(data: String, matchResult: RichUtil.MatchResult) {
+                        val clickText: String = RichUtil.removePlaceholderString(data)
+                        Timber.d("processContent mention click %s", clickText)
+//                        viewModel.jumpToUserDetail(clickText)
+                    }
+                },
+                object : RichUtil.OnTagClickListener {
+                    override fun onTagClick(data: String, matchResult: RichUtil.MatchResult) {
+                        val clickText: String = RichUtil.removePlaceholderString(data)
+                        Timber.d("processContent hashtag click %s", clickText)
+                    }
+                }
+            )
+        }
     }
 
     override fun onCreateViewHolder(context: Context, parent: ViewGroup, viewType: Int): VH {
