@@ -4,6 +4,7 @@ import android.util.Log
 import com.blankj.utilcode.util.NetworkUtils
 import com.example.news.AppContext
 import com.example.news.R
+import com.example.news.component.liteorm.LiteORMUtil
 import com.example.news.component.login.LoginHomeActivity
 import com.example.news.entity.response.BaseResponse
 import com.example.news.model.BaseViewModel
@@ -182,4 +183,13 @@ open class BaseLogicActivity:BaseCommonActivity() {
     fun toLogin() {
         startActivity(LoginHomeActivity::class.java)
     }
+    /**
+     * 获取数据库管理器
+     *
+     * @return
+     */
+    protected open fun getOrm(): LiteORMUtil {
+        return LiteORMUtil.getInstance(hostActivity)
+    }
+
 }

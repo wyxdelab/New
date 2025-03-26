@@ -57,6 +57,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".component.search.SearchActivity"
+            android:exported="false"
+            android:label=""/>
+        <activity
             android:name=".component.user.UserActivity"
             android:exported="false" />
         <activity

@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.emoji.bundled.BundledEmojiCompatConfig
 import androidx.emoji.text.EmojiCompat
 import com.drake.channel.sendEvent
+import com.example.news.component.liteorm.LiteORMUtil
 import com.example.news.component.login.LoginStatusChangedEvent
 import com.example.news.config.Config
 import com.example.news.util.PreferenceUtil
@@ -43,8 +44,8 @@ class AppContext: Application() {
 //        isLoginChat = false
 //        RongCoreClient.getInstance().logout()
 //
-//        //销毁一些实例，用的实例在获取，这样获取的用户id就是新的用户
-//        LiteORMUtil.destroy()
+        //销毁一些实例，用的实例在获取，这样获取的用户id就是新的用户
+        LiteORMUtil.destroy()
 //
 //        //下载管理器
 //        if (DownloadService.downloadManager != null) {

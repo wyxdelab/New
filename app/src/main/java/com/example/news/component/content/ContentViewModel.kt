@@ -21,8 +21,10 @@ import org.apache.commons.lang3.StringUtils
 /**
  * 内容界面的viewModel
  */
-class ContentViewModel(private val categoryId: String?) : BaseViewModel() {
+class ContentViewModel(private val categoryId: String?, val index: Int) : BaseViewModel() {
     var lastId: String? = null
+
+    var query: String? = null
     private val _data = MutableSharedFlow<Meta<Content>>()
     val data: Flow<Meta<Content>> = _data
 
@@ -35,14 +37,25 @@ class ContentViewModel(private val categoryId: String?) : BaseViewModel() {
 
     fun loadMore(lastId: String? = null) {
         this.lastId = lastId
-        viewModelScope.launch(coroutineExceptionHandler) {
 
-            DefaultNetworkRepository.contents(lastId, categoryId).onSuccess(viewModel) {
-                _data.emit(it!!)
+        if (index == 0) {
+            viewModelScope.launch(coroutineExceptionHandler) {
+
+                DefaultNetworkRepository.searchContent(query!!).onSuccess(viewModel) {
+                    _data.emit(it!!)
+                }
             }
+        } else {
+            viewModelScope.launch(coroutineExceptionHandler) {
+
+                DefaultNetworkRepository.contents(lastId, categoryId).onSuccess(viewModel) {
+                    _data.emit(it!!)
+                }
 
 
+            }
         }
+
 
     }
 

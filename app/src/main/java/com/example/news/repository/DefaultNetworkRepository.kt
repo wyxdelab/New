@@ -15,6 +15,7 @@ import com.example.news.component.order.Order
 import com.example.news.component.pay.PayRequest
 import com.example.news.component.pay.PayResponse
 import com.example.news.component.product.Product
+import com.example.news.component.search.Suggest
 import com.example.news.component.user.User
 import com.example.news.entity.Base
 import com.example.news.entity.BaseId
@@ -217,4 +218,16 @@ object DefaultNetworkRepository {
         datum[Constant.QUERY] = data
         return datum
     }
+
+
+    /**
+     * 搜索建议
+     *
+     * @param data
+     * @return
+     */
+    suspend fun searchSuggest(data: String): DetailResponse<Suggest> {
+        return service.searchSuggest(getSearchParams(data))
+    }
+
 }

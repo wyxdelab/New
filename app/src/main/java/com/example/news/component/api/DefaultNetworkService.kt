@@ -15,6 +15,7 @@ import com.example.news.component.order.Order
 import com.example.news.component.pay.PayRequest
 import com.example.news.component.pay.PayResponse
 import com.example.news.component.product.Product
+import com.example.news.component.search.Suggest
 import com.example.news.component.user.User
 import com.example.news.entity.Base
 import com.example.news.entity.BaseId
@@ -247,16 +248,16 @@ interface DefaultNetworkService {
 
     @GET("v1/searches/users")
     suspend fun searchUser(@QueryMap data: Map<String, String>): ListResponse<User>
-//
-//    /**
-//     * 搜索建议
-//     *
-//     * @param data
-//     * @return
-//     */
-//    @GET("v1/searches/suggests")
-//    suspend fun searchSuggest(@QueryMap data: Map<String, String>): DetailResponse<Suggest>
-    //endregion
+
+    /**
+     * 搜索建议
+     *
+     * @param data
+     * @return
+     */
+    @GET("v1/searches/suggests")
+    suspend fun searchSuggest(@QueryMap data: Map<String, String>): DetailResponse<Suggest>
+//    endregion
 
     companion object {
         fun create(): DefaultNetworkService {

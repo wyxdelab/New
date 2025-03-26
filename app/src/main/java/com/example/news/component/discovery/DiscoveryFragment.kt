@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.example.news.adapter.TabLayoutViewPager2Mediator
 import com.example.news.component.main.MainActivity
 import com.example.news.component.publish.PublishActivity
+import com.example.news.component.search.SearchActivity
 import com.example.news.databinding.FragmentDiscoveryBinding
 import com.example.news.fragment.BaseViewModelFragment
 import com.example.news.util.DataUtil
@@ -19,9 +20,8 @@ class DiscoveryFragment: BaseViewModelFragment<FragmentDiscoveryBinding>() {
                 indicator, pager ->
             }.attach()
         }
-
-
     }
+
 
     override fun initListeners() {
         super.initListeners()
@@ -33,6 +33,10 @@ class DiscoveryFragment: BaseViewModelFragment<FragmentDiscoveryBinding>() {
             loginAfter {
                 startActivity(Intent(requireActivity(), PublishActivity::class.java))
             }
+        }
+
+        binding.search.setOnClickListener {
+            startActivity(SearchActivity::class.java)
         }
 
     }

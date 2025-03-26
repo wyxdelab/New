@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.drake.channel.receiveEvent
 import com.example.news.component.articleldetail.ArticleDetailActivity
 import com.example.news.component.publish.ContentChangedEvent
+import com.example.news.component.search.SearchEvent
 import com.example.news.databinding.FragmentContentBinding
 import com.example.news.fragment.BaseViewModelFragment
 import com.example.news.util.Constant
@@ -39,7 +40,7 @@ class ContentFragment: BaseViewModelFragment<FragmentContentBinding>() {
 
     override fun initDatum() {
         super.initDatum()
-        val viewModelFactory = ContentViewModelFactory(requireArguments().getString(Constant.ID))
+        val viewModelFactory = ContentViewModelFactory(requireArguments().getString(Constant.ID), extraInt(Constant.STYLE))
         viewModel = ViewModelProvider(this, viewModelFactory).get(ContentViewModel::class.java)
         //本地提示
         initViewModel(viewModel)
@@ -76,8 +77,27 @@ class ContentFragment: BaseViewModelFragment<FragmentContentBinding>() {
             viewModel.loadMore()
         }
 
-    }
+        if (viewModel.index == Constant.VALUE0) {
+            //搜索结果界面
+            receiveEvent<SearchEvent> {
+                searchEvent(it)
+            }
+        }
 
+    }
+    /**
+     * 搜索事件
+     *
+     * @param event
+     */
+    private fun searchEvent(event: SearchEvent) {
+        viewModel.query = event.data
+        if (event.selectedIndex == viewModel.index) {
+            //只有索引一样才搜索
+            //这样可以避免同时搜索多个界面
+            viewModel.loadMore()
+        }
+    }
     private fun processRefreshAndLoadMoreStatus(success: Boolean, noMore: Boolean = false) {
         //传入false表示刷新失败
         binding.refresh.finishRefresh(500, success, false)
